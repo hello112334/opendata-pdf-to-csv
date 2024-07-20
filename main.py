@@ -4,7 +4,6 @@ import os
 import requests
 import re
 import xml.etree.ElementTree as ET
-import codecs
 
 
 def load_prefectures(csv_file):
@@ -19,6 +18,10 @@ def load_prefectures(csv_file):
 # 都道府県の辞書と英語名のリストを読み込む
 prefectures, PREFECTURES = load_prefectures('./table/prefectures.csv')
 
+# csv出力フォマード+転換リストを読み込む
+output_format_list_df = pd.read_csv(
+    './table/output_format.csv', header=0, dtype=str)
+
 
 def get_prefecture_name(prefecture_english_name):
     """
@@ -29,24 +32,14 @@ def get_prefecture_name(prefecture_english_name):
 
 # CSVファイルを読み込み、郵便番号をキー、市区町村名を値とする辞書を作成
 address_df = pd.read_csv(
-    './data_files/ken_all/utf_ken_all.csv', header=None, dtype=str,
-    names=["jis", "old", "postal", "prefecture_kana", "city_kana", "town_kana", "prefecture", "city", "town", "multi", "koaza", "block", "double", "update", "reason"])
-
-# 事業所CSVファイルを読み込む
-# 文字コードにShift-JISでないものも混じっているようで、エラーは無視する
-with codecs.open('./data_files/jigyosyo/JIGYOSYO.CSV', "r", "Shift-JIS", "ignore") as file:
-    # カラム名はken_allと合わせる
-    jigyosyo_df = pd.read_csv(
-        file, header=None, dtype=str, encoding="shift-jis",
-        names=["jis", "jigyosyo_kana", "jigyosyo", "prefecture", "city", "town", "detail", "postal", "old", "branch", "type", "multi", "diff"])
-
-    # マージして利用する
-    address_df = pd.concat([address_df, jigyosyo_df],ignore_index=True)
-
+    './data_files/ken_all/utf_ken_all.csv', header=None, dtype=str)
 postal_to_location = {row[2].strip(): (row[6], row[7])
                       for row in address_df.values}
 postal_to_location_code = {row[2].strip(): row[0] for row in address_df.values}
-address_to_location_code = {(row[6].strip(), row[7].strip()): row[0] for row in address_df.values}
+address_to_location_code = {
+    (row[6].strip(), row[7].strip()): row[0] for row in address_df.values}
+PREFECTURE_POSTAL_PREFIX = {
+    row[1].strip(): row[0] for row in address_df.values}
 
 
 def address_to_coordinates(address):
@@ -121,7 +114,10 @@ def postal2location_code(postal_code):
 
     postal_code = postal_code.replace("-", "")
     if postal_code in postal_to_location_code:
-        return postal_to_location_code[postal_code]
+        tmp_code = postal_to_location_code[postal_code]
+        tmp_code = f'{tmp_code:05}'  # 0埋めで5文字
+        tmp_code = convert_five_to_six_digit_code(tmp_code)  # 5桁を6桁に変換
+        return tmp_code
 
     return ""
 
@@ -134,7 +130,10 @@ def address2location_code(prefecture, location):
         return ""
 
     if (prefecture, location) in address_to_location_code:
-        return address_to_location_code[(prefecture, location)]
+        tmp_code = address_to_location_code[(prefecture, location)]
+        tmp_code = f'{tmp_code:05}'  # 0埋めで5文字
+        tmp_code = convert_five_to_six_digit_code(tmp_code)  # 5桁を6桁に変換
+        return tmp_code
 
     return ""
 
@@ -161,6 +160,9 @@ def delete_headers(df, line_number):
 
 
 def fix_format_page_df(df, line_number):
+    """
+    ページごとのデータフレームのフォーマットを修正
+    """
     clear_change_line(df)
     return delete_headers(delete_title(df), line_number)
 
@@ -210,8 +212,80 @@ def get_first_page(first_table, prefecture_name):
     return headers, data
 
 
+def unify_column_names(df, prefecture_name):
+    """
+    フォーマットのカラムを変換/統一
+    """
+    if prefecture_name not in output_format_list_df.columns:
+        print(
+            f"Error: {prefecture_name} is not in output_format_list_df columns")
+        return df
+
+    # 変換マッピングを取得
+    column_mapping = output_format_list_df[prefecture_name].dropna().to_dict()
+
+    # カラム名を変換
+    # 例: 医療機関における緊急避妊に係る対面診療への対応可能時間帯 -> 医療機関における緊急避妊にかかる対面診療への対応可能時間帯
+    for old_col_index, old_col in column_mapping.items():
+        # old_colはoutput_format_list_dfのnameのold_col_indexの値
+        new_col = output_format_list_df.loc[old_col_index, 'name']
+
+        if old_col in df.columns:
+            df.rename(columns={old_col: new_col}, inplace=True)
+
+    return df
+
+
+def reorder_columns(df):
+    """
+    output_format.csvのname列に記載された順番にdfの列を整理
+    """
+    desired_order = output_format_list_df['name'].dropna().tolist()
+    existing_columns = [col for col in desired_order if col in df.columns]
+    missing_columns = [col for col in desired_order if col not in df.columns]
+
+    # 欠落している列を表示
+    if missing_columns:
+        print(f"Missing columns: {missing_columns}")
+
+    df = df[existing_columns]
+
+    return df
+
+
+def calculate_check_digit(five_digit_code):
+    # 各桁に重みを掛けて合計を求める
+    weights = [6, 5, 4, 3, 2]  # 重み
+    total = sum(int(digit) * weight for digit,
+                weight in zip(five_digit_code, weights))
+
+    # 合計を11で割った余りを求める
+    remainder = total % 11
+
+    # 余りからチェックディジットを計算
+    if remainder == 0:
+        check_digit = 0
+    else:
+        check_digit = 11 - remainder
+
+    # 特殊ケース
+    if check_digit == 10:
+        check_digit = 0
+
+    return check_digit
+
+
+def convert_five_to_six_digit_code(five_digit_code):
+    check_digit = calculate_check_digit(five_digit_code)
+    new_code = f"{five_digit_code}{check_digit}"
+    # print(f"Converted {five_digit_code} to {new_code}")
+
+    return new_code
+
+
 def main():
     for i, prefecture in enumerate(PREFECTURES, 1):
+        prefecture_number_str = str(i).zfill(2)
         prefecture_name = get_prefecture_name(prefecture)
         print(f"PREFECTURE_NUMBER {i}: {prefecture_name} ({prefecture})")
 
@@ -278,8 +352,13 @@ def main():
                     df["市町村コード"] = df.apply(
                         lambda x: address2location_code(x["都道府県"], x["市町村"]), axis=1)
 
+            # フォーマットを変換/統一
+            df = unify_column_names(df, prefecture_name)
+
+            # 列を並び替える
+            df = reorder_columns(df)
+
             # CSVファイルに出力
-            prefecture_number_str = str(i).zfill(2)
             output_file_path = f"./output_files/{prefecture_number_str}_{prefecture}.csv"
             df.to_csv(output_file_path, header=True, index=False)
 
