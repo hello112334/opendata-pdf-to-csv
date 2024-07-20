@@ -162,3 +162,7 @@ cython_debug/
 # dim
 dim.json
 dim-lock.json
+
+# unnecessary data files
+data_files/shinryoujo_48
+data_files/shinryoujo_49
