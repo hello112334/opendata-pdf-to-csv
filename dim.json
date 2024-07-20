@@ -378,13 +378,19 @@
       "headers": {}
     },
     {
-      "url": "https://www.post.japanpost.jp/zipcode/dl/utf/zip/utf_ken_all.zip",
-      "name": "ken_all",
+      "url": "https://www.mhlw.go.jp/content/10800000/000610144.pdf",
+      "name": "shinryoujo_48",
       "catalogUrl": null,
       "catalogResourceId": null,
-      "postProcesses": [
-        "unzip"
-      ],
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/10800000/001274645.pdf",
+      "name": "shinryoujo_49",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
       "headers": {}
     }
   ]
