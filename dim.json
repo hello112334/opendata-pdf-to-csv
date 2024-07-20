@@ -386,16 +386,6 @@
         "unzip"
       ],
       "headers": {}
-    },
-    {
-      "url": "https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip",
-      "name": "jigyosyo",
-      "catalogUrl": null,
-      "catalogResourceId": null,
-      "postProcesses": [
-        "unzip"
-      ],
-      "headers": {}
     }
   ]
 }
