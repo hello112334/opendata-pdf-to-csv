@@ -4,6 +4,7 @@ import os
 import requests
 import re
 import xml.etree.ElementTree as ET
+import codecs
 
 
 def load_prefectures(csv_file):
@@ -28,7 +29,20 @@ def get_prefecture_name(prefecture_english_name):
 
 # CSVファイルを読み込み、郵便番号をキー、市区町村名を値とする辞書を作成
 address_df = pd.read_csv(
-    './data_files/ken_all/utf_ken_all.csv', header=None, dtype=str)
+    './data_files/ken_all/utf_ken_all.csv', header=None, dtype=str,
+    names=["jis", "old", "postal", "prefecture_kana", "city_kana", "town_kana", "prefecture", "city", "town", "multi", "koaza", "block", "double", "update", "reason"])
+
+# 事業所CSVファイルを読み込む
+# 文字コードにShift-JISでないものも混じっているようで、エラーは無視する
+with codecs.open('./data_files/jigyosyo/JIGYOSYO.CSV', "r", "Shift-JIS", "ignore") as file:
+    # カラム名はken_allと合わせる
+    jigyosyo_df = pd.read_csv(
+        file, header=None, dtype=str, encoding="shift-jis",
+        names=["jis", "jigyosyo_kana", "jigyosyo", "prefecture", "city", "town", "detail", "postal", "old", "branch", "type", "multi", "diff"])
+
+    # マージして利用する
+    address_df = pd.concat([address_df, jigyosyo_df],ignore_index=True)
+
 postal_to_location = {row[2].strip(): (row[6], row[7])
                       for row in address_df.values}
 postal_to_location_code = {row[2].strip(): row[0] for row in address_df.values}
