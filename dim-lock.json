@@ -626,6 +626,21 @@
         "unzip"
       ],
       "headers": {}
+    },
+    {
+      "name": "jigyosyo",
+      "url": "https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip",
+      "path": "./data_files/jigyosyo/jigyosyo.zip",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "lastModified": "2024-06-28T07:59:01.000Z",
+      "eTag": null,
+      "lastDownloaded": "2024-07-20T07:35:52.036Z",
+      "integrity": "e7574348fbb47c71f484b1308d842d7e6f2bd796",
+      "postProcesses": [
+        "unzip"
+      ],
+      "headers": {}
     }
   ]
 }
