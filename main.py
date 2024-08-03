@@ -290,7 +290,14 @@ def convert_five_to_six_digit_code(five_digit_code):
 
     return new_code
 
-def main():
+# usage: python main.py               # output csv files (default)
+# usage: python main.py --output-json # output json files
+def main(argv):
+    if argv[0] == '--output-json':
+        print("Exporting to JSON files...")
+    else:
+        print("Exporting to CSV files...")
+
     for i, prefecture in enumerate(PREFECTURES, 1):
         prefecture_number_str = str(i).zfill(2)
         prefecture_name = get_prefecture_name(prefecture)
