@@ -8,9 +8,13 @@ import sys
 import codecs
 import logging
 from concurrent.futures import ThreadPoolExecutor
+import jageocoder
+from enum import Enum
 # 緯度経度ダブルチェック
 import geopandas as gpd
 from shapely.geometry import Point
+# 半角変換
+import unicodedata
 
 # ==================================================================
 # Function
@@ -36,6 +40,7 @@ def get_prefecture_name(prefecture_english_name):
 def address_to_coordinates(address):
     """
     住所から緯度経度を取得
+    note: token エラーの可能性がある
     """
     if not address:
         return 0, 0
@@ -54,6 +59,27 @@ def address_to_coordinates(address):
         latitude = round(float(root.findtext(".//candidate/latitude")), 6)
 
     return latitude, longitude
+
+def jageocoder_search(address):
+    """
+    住所から緯度経度を取得 (jageocoderを使用)
+    """
+    if not address:
+        return 0, 0
+
+    address = str(address)
+    result = jageocoder.search(address)
+
+    if result['candidates']:
+        # 最初の候補から緯度経度を取得
+        latitude = result['candidates'][0]['y']
+        longitude = result['candidates'][0]['x']
+
+        # 緯度経度の範囲を確認する
+        if (-90 <= latitude <= 90) and (-180 <= longitude <= 180):
+            return round(latitude, 6), round(longitude, 6)
+
+    return 0, 0
 
 
 def split_japanese_address(address):
@@ -82,36 +108,38 @@ def split_japanese_address(address):
 
 def postal2location(postal_code):
     """
-    郵便番号から市区町村を取得
+    郵便番号から市区町村名と市区町村コードを取得
     """
-
     if pd.isna(postal_code):
-        return "", ""
+        return "", "", ""
 
     postal_code = postal_code.replace("-", "")
-    if postal_code in postal_to_location:
-        return postal_to_location[postal_code]
 
-    return "", ""
+    # 1. ken_all.csvと突き合わせ
+    prefecture, city = "", ""
+    city_code = ""
+    for _, row in address_df.iterrows():
+        if row["postal"].strip() == postal_code:
+            prefecture = row["prefecture"].strip()
+            city = row["city"].strip()
+            city_code = row["jis"].strip()
+            break
 
-
-def postal2location_code(postal_code):
-    """
-    郵便番号から市区町村コードを取得
-    """
-
-    if pd.isna(postal_code):
-        return ""
-
-    postal_code = postal_code.replace("-", "")
-    if postal_code in postal_to_location_code:
-        tmp_code = postal_to_location_code[postal_code]
-        tmp_code = f'{tmp_code:05}'  # 0埋めで5文字
-        tmp_code = convert_five_to_six_digit_code(tmp_code)  # 5桁を6桁に変換
-        return tmp_code
-
-    return ""
-
+    # 2. 個別事業所データと突き合わせ
+    if prefecture == "" and city == "":
+        for _, row in jigyosyo_df.iterrows():
+            if row["postal"].strip() == postal_code:
+                prefecture = row["prefecture"].strip()
+                city = row["city"].strip()
+                city_code = row["jis"].strip()
+                break
+    
+    # 5桁を6桁に変換
+    if city_code != "":
+        tmp_code = f'{city_code:05}'  # 0埋めで5文字
+        city_code = convert_five_to_six_digit_code(tmp_code)
+    
+    return prefecture, city, city_code
 
 def address2location_code(prefecture, location):
     """
@@ -135,7 +163,7 @@ def delete_title(df):
     """
     if df.iloc[0, 0] == "緊急避妊に係る診療が可能な産婦人科医療機関等一覧":
         return df.drop(df.index[:1])
-    clear_change_line(df)
+    # clear_change_line(df)
     return df
 
 
@@ -154,22 +182,33 @@ def fix_format_page_df(df, line_number):
     """
     ページごとのデータフレームのフォーマットを修正
     """
-    clear_change_line(df)
+    # clear_change_line(df)
     return delete_headers(delete_title(df), line_number)
 
+def zenkaku_to_hankaku_regex(text):
+    """
+    全角を半角に変換する関数
+    """
+    if text:
+        text =  unicodedata.normalize('NFKC', text)
+    return text
 
 def clear_change_line(df):
     """
-    行処理
+    行の表記を統一する処理
     """
-    # 改行コードと"を削除
-    df.replace('\n', '', regex=True).replace('\r', '', regex=True).replace(
-        '\r\n', '', regex=True).replace('\n\r', '', regex=True)
+    # 改行コードを削除
+    df.replace(r'\r\n|\r|\n', '', regex=True, inplace=True)
+
+    # "を削除
     df.replace('"', '', regex=True, inplace=True)
 
     # 時間表記の「~」を「-」に変換
     df.replace('~', '-', regex=True, inplace=True)
     df.replace('〜', '-', regex=True, inplace=True)
+
+    # 全角数字を半角数字に変換する
+    df = df.apply(lambda x: x.map(zenkaku_to_hankaku_regex))
 
     # データが2つ未満の行は不要な可能性が高いので行を削除 & 列名に欠損値がある場合も列ごと削除
     df.dropna(axis=0, thresh=2, inplace=True)
@@ -307,7 +346,7 @@ def check_location_in_japan(latitude, longitude, expected_prefecture, expected_c
 
     if matching_area.empty:
         # print("指定された座標に該当する都道府県が見つかりません。")
-        print(f"[NG][{name}] 該当する都道府県が見つかりません。都道府県: {expected_prefecture},({latitude}, {longitude})")
+        print(f"[NG][該当する都道府県が見つかりません][{name}]都道府県: {expected_prefecture},({latitude}, {longitude})")
         return False
 
     # 抽出された都道府県
@@ -315,12 +354,10 @@ def check_location_in_japan(latitude, longitude, expected_prefecture, expected_c
 
     # 提供された都道府県と比較
     is_prefecture_match = extracted_prefecture == expected_prefecture
-
-    if is_prefecture_match:
-        # print(f"[OK][{name}]")
-        pass
-    else:
-        print(f"[NG][{name}] 指定された座標の都道府県は一致していません。都道府県: {extracted_prefecture}:{expected_prefecture},({latitude}, {longitude})")
+    
+    # 結果出力
+    if not is_prefecture_match:
+        print(f"[NG][指定された座標の都道府県は一致していません][{name}]。都道府県: {extracted_prefecture}:{expected_prefecture},({latitude}, {longitude})")
 
     return is_prefecture_match
 
@@ -330,7 +367,7 @@ def main(i, prefecture, argv):
     usage: python main.py               # output csv files (default)
     usage: python main.py --output-json # output json files
     """
-    # for i, prefecture in enumerate(PREFECTURES, 1):
+
     prefecture_number_str = str(i).zfill(2)
     prefecture_name = get_prefecture_name(prefecture)
     print(f"PREFECTURE_NUMBER {i}: {prefecture_name} ({prefecture})")
@@ -348,7 +385,7 @@ def main(i, prefecture, argv):
                 return
             headers, data = get_first_page(first_table, prefecture_name)
             df = pd.DataFrame(data, columns=headers)
-            clear_change_line(df)
+            # clear_change_line(df)
 
             for page_num in range(1, len(pdf.pages)):
                 page = pdf.pages[page_num]
@@ -358,8 +395,9 @@ def main(i, prefecture, argv):
 
                     # 「基本情報」「施設名」「医療機関名」を含む行を削除
                     page_df = fix_format_page_df(page_df, 1)
-                    clear_change_line(page_df)
+                    # clear_change_line(page_df)
                     df = pd.concat([df, page_df], ignore_index=True)
+            clear_change_line(df)
 
         # 沖縄県と静岡県は『公表の希望の有無』の列を削除
         if prefecture_name in ["沖縄県", "静岡県"]:
@@ -367,12 +405,11 @@ def main(i, prefecture, argv):
 
         if "郵便番号" in df.columns:
             # 郵便番号から市区町村を取得
-            df["都道府県"], df["市町村"] = zip(
-                *df["郵便番号"].apply(lambda x: postal2location(x) if pd.notna(x) else ("", "")))
+            df["都道府県"], df["市町村"], df["市町村コード"] = zip(
+                *df["郵便番号"].apply(lambda x: postal2location(x) if pd.notna(x) else ("", "", "")))
 
-            # 郵便番号から市町村コードを取得
-            df["市町村コード"] = df["郵便番号"].apply(
-                lambda x: postal2location_code(x) if pd.notna(x) else "")
+            # エラー列(String列挙)を作成し、郵便番号という文字列を追加する
+            df["エラー"] = df.apply(lambda x: Error_list.LAT_LON_ERROR.value if x["都道府県"] == "" and x["市町村"] == "" else "", axis=1)
 
         if "住所" in df.columns:
             # 住所に都道府県が書いていない行にprefecture_nameを先頭に入れる
@@ -383,20 +420,10 @@ def main(i, prefecture, argv):
                         "住所"] = prefecture_name + null_prefecture_address["住所"]
 
             # 緯度経度を取得
+            # address_to_coordinates: token error
+            # jageocoder_search
             df["緯度"], df["経度"] = zip(
-                *df["住所"].apply(lambda x: address_to_coordinates(x) if pd.notna(x) else ("0", "0")))
-
-            # 都道府県、市区町村が空の行に住所から取得した都道府県、市区町村を入れる
-            null_prefecture = df[(df["都道府県"] == "") | (df["市町村"] == "")]
-            if not null_prefecture.empty:
-                region_locality = null_prefecture["住所"].apply(
-                    lambda x: split_japanese_address(x)[:2])
-                region_locality = pd.DataFrame(region_locality.tolist(
-                ), index=null_prefecture.index, columns=["都道府県", "市町村"])
-                df.update(region_locality)
-                # 都道府県、市区町村から市区町村コードを取得
-                df["市町村コード"] = df.apply(
-                    lambda x: address2location_code(x["都道府県"], x["市町村"]), axis=1)
+                *df["住所"].apply(lambda x: jageocoder_search(x) if pd.notna(x) else ("0", "0")))
 
         # フォーマットを変換/統一
         df = unify_column_names(df, prefecture_name)
@@ -404,13 +431,8 @@ def main(i, prefecture, argv):
         # 列を並び替える
         df = reorder_columns(df)
 
-
         # GeoJSONで緯度経度をチェックする
         df.apply(lambda row: check_location_in_japan(row["住所_緯度"], row["住所_経度"], row["住所_都道府県"], row["住所_市区町村（郡）"], row["施設_名称"]),axis=1)
-
-        # CSVファイルに出力
-        output_file_path = f"./output_files/{prefecture_number_str}_{prefecture}.csv"
-        df.to_csv(output_file_path, header=True, index=False)
 
         if argv[0] == '--output-json':
             # JSONファイルに出力
@@ -440,10 +462,20 @@ output_format_list_df = pd.read_csv(
 
 # CSVファイルを読み込み、郵便番号をキー、市区町村名を値とする辞書を作成
 address_df = pd.read_csv(
-    './data_files/ken_all/utf_ken_all.csv', header=None, dtype=str)
-postal_to_location = {row[2].strip(): (row[6], row[7])
-                      for row in address_df.values}
-postal_to_location_code = {row[2].strip(): row[0] for row in address_df.values}
+    './data_files/ken_all/utf_ken_all.csv', header=None, dtype=str,
+    names=["jis", "old", "postal", "prefecture_kana", "city_kana", "town_kana", "prefecture", "city", "town", "multi", "koaza", "block", "double", "update", "reason"])
+
+# 事業所CSVファイルを読み込む
+# 文字コードにShift-JISでないものも混じっているようで、エラーは無視する
+with codecs.open('./data_files/jigyosyo/JIGYOSYO.CSV', "r", "Shift-JIS", "ignore") as file:
+    # カラム名はken_allと合わせる
+    jigyosyo_df = pd.read_csv(
+        file, header=None, dtype=str, encoding="shift-jis",
+        names=["jis", "jigyosyo_kana", "jigyosyo", "prefecture", "city", "town", "detail", "postal", "old", "branch", "type", "multi", "diff"])
+
+    # マージして利用する
+    # address_df = pd.concat([address_df, jigyosyo_df],ignore_index=True)
+
 address_to_location_code = {
     (row[6].strip(), row[7].strip()): row[0] for row in address_df.values}
 PREFECTURE_POSTAL_PREFIX = {
@@ -452,6 +484,15 @@ PREFECTURE_POSTAL_PREFIX = {
 # geojson
 geojson_file_path = "./table/japan.geojson"
 gdf = gpd.read_file(geojson_file_path) # GeoJSONデータを読み込む
+
+# jageocoder
+jageocoder.init(url='https://jageocoder.info-proto.com/jsonrpc')
+
+# エラーリスト
+class Error_list(Enum):
+    LAT_LON_ERROR = "緯度経度"
+    LAT_LON_MISMATCH = "緯度経度(不一致)"
+    GOOGLE_LAT_LON_ERROR = "緯度経度(Googleエラー)"
 
 # ==================================================================
 # Main
@@ -469,19 +510,11 @@ if __name__ == "__main__":
             print("Exporting to JSON files...")
         else:
             print("Exporting to CSV files...")
-        
-        # main並行処理
-        # with ThreadPoolExecutor() as executor:
-        #     if '--test' in argv:
-        #         executor.map(lambda p: main(*p, argv), enumerate(PREFECTURES[:1], 1))  # Read only the first row
-        #     else:
-        #         executor.map(lambda p: main(*p, argv), enumerate(PREFECTURES, 1))
-        
+
         # 通常処理
-        # Read only the first row if --test is in argv
+        # テストモード --test は北海道だけ実行
         for index, prefecture in enumerate(PREFECTURES, 1):
-            if not ('--test' in argv and index > 1):
-                main(index, prefecture, argv)
+            main(index, prefecture, argv)
 
     except Exception as e:
         print(f"Error: {e}")
