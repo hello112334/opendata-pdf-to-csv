@@ -6,6 +6,16 @@ import re
 import xml.etree.ElementTree as ET
 import sys
 import codecs
+import logging
+from concurrent.futures import ThreadPoolExecutor
+# 緯度経度ダブルチェック
+import geopandas as gpd
+from shapely.geometry import Point
+
+# ==================================================================
+# Function
+# ==================================================================
+
 
 def load_prefectures(csv_file):
     """
@@ -16,31 +26,11 @@ def load_prefectures(csv_file):
     return {row['english_name']: row['name'] for _, row in df.iterrows()}, list(df['english_name'])
 
 
-# 都道府県の辞書と英語名のリストを読み込む
-prefectures, PREFECTURES = load_prefectures('./table/prefectures.csv')
-
-# csv出力フォマード+転換リストを読み込む
-output_format_list_df = pd.read_csv(
-    './table/output_format.csv', header=0, dtype=str)
-
-
 def get_prefecture_name(prefecture_english_name):
     """
     都道府県の英語名から日本語名を取得
     """
     return prefectures.get(prefecture_english_name, "")
-
-
-# CSVファイルを読み込み、郵便番号をキー、市区町村名を値とする辞書を作成
-address_df = pd.read_csv(
-    './data_files/ken_all/utf_ken_all.csv', header=None, dtype=str)
-postal_to_location = {row[2].strip(): (row[6], row[7])
-                      for row in address_df.values}
-postal_to_location_code = {row[2].strip(): row[0] for row in address_df.values}
-address_to_location_code = {
-    (row[6].strip(), row[7].strip()): row[0] for row in address_df.values}
-PREFECTURE_POSTAL_PREFIX = {
-    row[1].strip(): row[0] for row in address_df.values}
 
 
 def address_to_coordinates(address):
@@ -212,13 +202,17 @@ def get_first_page(first_table, prefecture_name):
     data = first_table[row+1:]
     return headers, data
 
-# usage: python main.py               # output csv files (default)
-# usage: python main.py --output-json # output json files
+
 def main(argv):
+    """
+    usage: python main.py               # output csv files (default)
+    usage: python main.py --output-json # output json files
+    """
     if argv[0] == '--output-json':
         print("Exporting to JSON files...")
     else:
         print("Exporting to CSV files...")
+
 
 def unify_column_names(df, prefecture_name):
     """
@@ -286,117 +280,208 @@ def calculate_check_digit(five_digit_code):
 def convert_five_to_six_digit_code(five_digit_code):
     check_digit = calculate_check_digit(five_digit_code)
     new_code = f"{five_digit_code}{check_digit}"
-    # print(f"Converted {five_digit_code} to {new_code}")
 
     return new_code
+    
 
-# usage: python main.py               # output csv files (default)
-# usage: python main.py --output-json # output json files
-def main(argv):
-    if argv[0] == '--output-json':
-        print("Exporting to JSON files...")
+def check_location_in_japan(latitude, longitude, expected_prefecture, expected_city, name):
+    """
+    指定された座標が指定された都道府県と市区町村に属するかを確認する関数。
+
+    Parameters:
+    latitude (float): 緯度
+    longitude (float): 経度
+    prefecture (str): 都道府県名
+    city (str): 市区町村名
+    name(str): 施設名
+
+    Returns:
+    bool: 指定された座標が都道府県と市区町村内に含まれる場合はTrue、含まれない場合はFalse
+    """
+
+    # 指定された座標のポイントを作成
+    point = Point(longitude, latitude)
+
+    # 座標が含まれる都道府県を検索
+    matching_area = gdf[gdf.contains(point)]
+
+    if matching_area.empty:
+        # print("指定された座標に該当する都道府県が見つかりません。")
+        print(f"[NG][{name}] 該当する都道府県が見つかりません。都道府県: {expected_prefecture},({latitude}, {longitude})")
+        return False
+
+    # 抽出された都道府県
+    extracted_prefecture = matching_area.iloc[0]['nam_ja']  # 都道府県名
+
+    # 提供された都道府県と比較
+    is_prefecture_match = extracted_prefecture == expected_prefecture
+
+    if is_prefecture_match:
+        # print(f"[OK][{name}]")
+        pass
     else:
-        print("Exporting to CSV files...")
+        print(f"[NG][{name}] 指定された座標の都道府県は一致していません。都道府県: {extracted_prefecture}:{expected_prefecture},({latitude}, {longitude})")
 
-    for i, prefecture in enumerate(PREFECTURES, 1):
-        prefecture_number_str = str(i).zfill(2)
-        prefecture_name = get_prefecture_name(prefecture)
-        print(f"PREFECTURE_NUMBER {i}: {prefecture_name} ({prefecture})")
+    return is_prefecture_match
 
-        try:
-            opendata_files = os.listdir(f"./data_files/shinryoujo_{i}")
-            opendata_file = opendata_files[0]
 
-            file_path = f"./data_files/shinryoujo_{i}/{opendata_file}"
-            with pdfplumber.open(file_path) as pdf:
-                first_page = pdf.pages[0]
-                first_table = first_page.extract_table()
-                if first_table is None or len(first_table) < 2:
-                    print("No table found.")
-                    continue
-                headers, data = get_first_page(first_table, prefecture_name)
-                df = pd.DataFrame(data, columns=headers)
-                clear_change_line(df)
+def main(i, prefecture, argv):
+    """
+    usage: python main.py               # output csv files (default)
+    usage: python main.py --output-json # output json files
+    """
+    # for i, prefecture in enumerate(PREFECTURES, 1):
+    prefecture_number_str = str(i).zfill(2)
+    prefecture_name = get_prefecture_name(prefecture)
+    print(f"PREFECTURE_NUMBER {i}: {prefecture_name} ({prefecture})")
 
-                for page_num in range(1, len(pdf.pages)):
-                    page = pdf.pages[page_num]
-                    table = page.extract_table()
-                    if table:
-                        page_df = pd.DataFrame(table, columns=headers)
+    try:
+        opendata_files = os.listdir(f"./data_files/shinryoujo_{i}")
+        opendata_file = opendata_files[0]
 
-                        # 「基本情報」「施設名」「医療機関名」を含む行を削除
-                        page_df = fix_format_page_df(page_df, 1)
-                        clear_change_line(page_df)
-                        df = pd.concat([df, page_df], ignore_index=True)
+        file_path = f"./data_files/shinryoujo_{i}/{opendata_file}"
+        with pdfplumber.open(file_path) as pdf:
+            first_page = pdf.pages[0]
+            first_table = first_page.extract_table()
+            if first_table is None or len(first_table) < 2:
+                print("No table found.")
+                return
+            headers, data = get_first_page(first_table, prefecture_name)
+            df = pd.DataFrame(data, columns=headers)
+            clear_change_line(df)
 
-            # 沖縄県と静岡県は『公表の希望の有無』の列を削除
-            if prefecture_name in ["沖縄県", "静岡県"]:
-                df.drop(df.columns[0], axis=1, inplace=True)
+            for page_num in range(1, len(pdf.pages)):
+                page = pdf.pages[page_num]
+                table = page.extract_table()
+                if table:
+                    page_df = pd.DataFrame(table, columns=headers)
 
-            if "郵便番号" in df.columns:
-                # 郵便番号から市区町村を取得
-                df["都道府県"], df["市町村"] = zip(
-                    *df["郵便番号"].apply(lambda x: postal2location(x) if pd.notna(x) else ("", "")))
+                    # 「基本情報」「施設名」「医療機関名」を含む行を削除
+                    page_df = fix_format_page_df(page_df, 1)
+                    clear_change_line(page_df)
+                    df = pd.concat([df, page_df], ignore_index=True)
 
-                # 郵便番号から市町村コードを取得
-                df["市町村コード"] = df["郵便番号"].apply(
-                    lambda x: postal2location_code(x) if pd.notna(x) else "")
+        # 沖縄県と静岡県は『公表の希望の有無』の列を削除
+        if prefecture_name in ["沖縄県", "静岡県"]:
+            df.drop(df.columns[0], axis=1, inplace=True)
 
-            if "住所" in df.columns:
-                # 住所に都道府県が書いていない行にprefecture_nameを先頭に入れる
-                null_prefecture_address = df[df["住所"].str.contains(
-                    prefecture_name) == False]
-                if not null_prefecture_address.empty:
-                    df.loc[null_prefecture_address.index,
-                           "住所"] = prefecture_name + null_prefecture_address["住所"]
+        if "郵便番号" in df.columns:
+            # 郵便番号から市区町村を取得
+            df["都道府県"], df["市町村"] = zip(
+                *df["郵便番号"].apply(lambda x: postal2location(x) if pd.notna(x) else ("", "")))
 
-                # 緯度経度を取得
-                df["緯度"], df["経度"] = zip(
-                    *df["住所"].apply(lambda x: address_to_coordinates(x) if pd.notna(x) else ("0", "0")))
+            # 郵便番号から市町村コードを取得
+            df["市町村コード"] = df["郵便番号"].apply(
+                lambda x: postal2location_code(x) if pd.notna(x) else "")
 
-                # 都道府県、市区町村が空の行に住所から取得した都道府県、市区町村を入れる
-                null_prefecture = df[(df["都道府県"] == "") | (df["市町村"] == "")]
-                if not null_prefecture.empty:
-                    region_locality = null_prefecture["住所"].apply(
-                        lambda x: split_japanese_address(x)[:2])
-                    region_locality = pd.DataFrame(region_locality.tolist(
-                    ), index=null_prefecture.index, columns=["都道府県", "市町村"])
-                    df.update(region_locality)
-                    # 都道府県、市区町村から市区町村コードを取得
-                    df["市町村コード"] = df.apply(
-                        lambda x: address2location_code(x["都道府県"], x["市町村"]), axis=1)
+        if "住所" in df.columns:
+            # 住所に都道府県が書いていない行にprefecture_nameを先頭に入れる
+            null_prefecture_address = df[df["住所"].str.contains(
+                prefecture_name) == False]
+            if not null_prefecture_address.empty:
+                df.loc[null_prefecture_address.index,
+                        "住所"] = prefecture_name + null_prefecture_address["住所"]
 
-            # フォーマットを変換/統一
-            df = unify_column_names(df, prefecture_name)
+            # 緯度経度を取得
+            df["緯度"], df["経度"] = zip(
+                *df["住所"].apply(lambda x: address_to_coordinates(x) if pd.notna(x) else ("0", "0")))
 
-            # 列を並び替える
-            df = reorder_columns(df)
+            # 都道府県、市区町村が空の行に住所から取得した都道府県、市区町村を入れる
+            null_prefecture = df[(df["都道府県"] == "") | (df["市町村"] == "")]
+            if not null_prefecture.empty:
+                region_locality = null_prefecture["住所"].apply(
+                    lambda x: split_japanese_address(x)[:2])
+                region_locality = pd.DataFrame(region_locality.tolist(
+                ), index=null_prefecture.index, columns=["都道府県", "市町村"])
+                df.update(region_locality)
+                # 都道府県、市区町村から市区町村コードを取得
+                df["市町村コード"] = df.apply(
+                    lambda x: address2location_code(x["都道府県"], x["市町村"]), axis=1)
 
+        # フォーマットを変換/統一
+        df = unify_column_names(df, prefecture_name)
+
+        # 列を並び替える
+        df = reorder_columns(df)
+
+
+        # GeoJSONで緯度経度をチェックする
+        df.apply(lambda row: check_location_in_japan(row["住所_緯度"], row["住所_経度"], row["住所_都道府県"], row["住所_市区町村（郡）"], row["施設_名称"]),axis=1)
+
+        # CSVファイルに出力
+        output_file_path = f"./output_files/{prefecture_number_str}_{prefecture}.csv"
+        df.to_csv(output_file_path, header=True, index=False)
+
+        if argv[0] == '--output-json':
+            # JSONファイルに出力
+            prefecture_number_str = str(i).zfill(2)
+            output_file_path = f"./output_files/json/{prefecture_number_str}_{prefecture}.json"
+            df.to_json(output_file_path, orient='records',
+                        force_ascii=False)
+        else:
             # CSVファイルに出力
+            prefecture_number_str = str(i).zfill(2)
             output_file_path = f"./output_files/{prefecture_number_str}_{prefecture}.csv"
             df.to_csv(output_file_path, header=True, index=False)
 
-            if argv[0] == '--output-json':
-                # JSONファイルに出力
-                prefecture_number_str = str(i).zfill(2)
-                output_file_path = f"./output_files/json/{prefecture_number_str}_{prefecture}.json"
-                df.to_json(output_file_path, orient='records', force_ascii=False)
-            else:
-                # CSVファイルに出力
-                prefecture_number_str = str(i).zfill(2)
-                output_file_path = f"./output_files/{prefecture_number_str}_{prefecture}.csv"
-                df.to_csv(output_file_path, header=True, index=False)
-
-        except Exception as e:
-            print(f"Error: {e}")
+    except Exception as e:
+        print(f"Error: {e}")
 
 
+# ==================================================================
+# Parameters
+# ==================================================================
+# 都道府県の辞書と英語名のリストを読み込む
+prefectures, PREFECTURES = load_prefectures('./table/prefectures.csv')
+
+# csv出力フォマード+転換リストを読み込む
+output_format_list_df = pd.read_csv(
+    './table/output_format.csv', header=0, dtype=str)
+
+# CSVファイルを読み込み、郵便番号をキー、市区町村名を値とする辞書を作成
+address_df = pd.read_csv(
+    './data_files/ken_all/utf_ken_all.csv', header=None, dtype=str)
+postal_to_location = {row[2].strip(): (row[6], row[7])
+                      for row in address_df.values}
+postal_to_location_code = {row[2].strip(): row[0] for row in address_df.values}
+address_to_location_code = {
+    (row[6].strip(), row[7].strip()): row[0] for row in address_df.values}
+PREFECTURE_POSTAL_PREFIX = {
+    row[1].strip(): row[0] for row in address_df.values}
+
+# geojson
+geojson_file_path = "./table/japan.geojson"
+gdf = gpd.read_file(geojson_file_path) # GeoJSONデータを読み込む
+
+# ==================================================================
+# Main
+# ==================================================================
 if __name__ == "__main__":
     try:
         if not os.path.exists("./output_files"):
             os.mkdir("./output_files")
         if not os.path.exists("./output_files/json"):
             os.mkdir("./output_files/json")
-        main(sys.argv[1:] or [''])
+
+        # 出力確認
+        argv = sys.argv[1:] or ['']
+        if argv[0] == '--output-json':
+            print("Exporting to JSON files...")
+        else:
+            print("Exporting to CSV files...")
+        
+        # main並行処理
+        # with ThreadPoolExecutor() as executor:
+        #     if '--test' in argv:
+        #         executor.map(lambda p: main(*p, argv), enumerate(PREFECTURES[:1], 1))  # Read only the first row
+        #     else:
+        #         executor.map(lambda p: main(*p, argv), enumerate(PREFECTURES, 1))
+        
+        # 通常処理
+        # Read only the first row if --test is in argv
+        for index, prefecture in enumerate(PREFECTURES, 1):
+            if not ('--test' in argv and index > 1):
+                main(index, prefecture, argv)
+
     except Exception as e:
         print(f"Error: {e}")
