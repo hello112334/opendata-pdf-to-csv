@@ -641,6 +641,21 @@
         "unzip"
       ],
       "headers": {}
+    },
+    {
+      "name": "JPGIS2014",
+      "url": "https://nlftp.mlit.go.jp/ksj/gml/data/N03/N03-2024/N03-20240101_GML.zip",
+      "path": "./data_files/JPGIS2014/N03-20240101_GML.zip",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "lastModified": "2024-06-10T02:15:28.000Z",
+      "eTag": "2471ed71-61a7fb90bf000",
+      "lastDownloaded": "2024-09-09T12:57:18.038Z",
+      "integrity": "d1046ed61d407d21b39bddce3af7847a95120b62",
+      "postProcesses": [
+        "unzip"
+      ],
+      "headers": {}
     }
   ]
 }

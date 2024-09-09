@@ -166,3 +166,7 @@ dim-lock.json
 # unnecessary data files
 data_files/shinryoujo_48
 data_files/shinryoujo_49
+
+# over size
+data_files/JPGIS2014
+
