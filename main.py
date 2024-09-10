@@ -18,7 +18,7 @@ from shapely.geometry import Point
 import unicodedata
 # ログ出力
 import logging
-from logging import getLogger, basicConfig, DEBUG, INFO
+from logging import getLogger, basicConfig, INFO
 
 # ==================================================================
 # Function
@@ -497,10 +497,8 @@ basicConfig(filename=f"logs/{current_date}.log", filemode='a',
             format='[%(asctime)s]%(levelname)-7s: %(message)s',
             level=INFO)
 
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
-
 # コンソール（標準出力）に出力するハンドラを作成
+logger = logging.getLogger(__name__)
 console_handler = logging.StreamHandler()
 console_handler.setLevel(logging.INFO)
 logger.addHandler(console_handler)
@@ -510,6 +508,14 @@ logger.addHandler(console_handler)
 # ==================================================================
 if __name__ == "__main__":
     try:
+        # init folders
+        if not os.path.exists("./output_files"):
+            os.mkdir("./output_files")
+        if not os.path.exists("./output_files/json"):
+            os.mkdir("./output_files/json")
+        if not os.path.exists("./logs"):
+            os.mkdir("./logs")
+
         logger.info(f"{'='*10} START {'='*10}")
 
         # load config
@@ -541,13 +547,6 @@ if __name__ == "__main__":
             jigyosyo_df = pd.read_csv(
                 file, header=None, dtype=str, encoding="shift-jis",
                 names=["jis", "jigyosyo_kana", "jigyosyo", "prefecture", "city", "town", "detail", "postal", "old", "branch", "type", "multi", "diff"])
-
-        if not os.path.exists("./output_files"):
-            os.mkdir("./output_files")
-        if not os.path.exists("./output_files/json"):
-            os.mkdir("./output_files/json")
-        if not os.path.exists("./logs"):
-            os.mkdir("./logs")
 
         # 出力確認
         argv = sys.argv[1:] or ['']
