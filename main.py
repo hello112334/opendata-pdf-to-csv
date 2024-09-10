@@ -406,7 +406,7 @@ def main(i, prefecture, argv):
         # データの整理
         df = clear_change_line(df)
 
-        # エラー列を初期化
+        # 追加列の初期化
         df["エラー"] = ""
         df["住所_都道府県"] = ""
         df["住所_市区町村（郡）"] = ""
@@ -490,25 +490,12 @@ class ERROR_LIST(Enum):
     # URLにPingを打ち、404などのエラーが返った
 
 
-# ログ設定
-# yyyymmdd format
-current_date = datetime.now().strftime("%Y%m%d")
-basicConfig(filename=f"logs/{current_date}.log", filemode='a',
-            format='[%(asctime)s]%(levelname)-7s: %(message)s',
-            level=INFO)
-
-# コンソール（標準出力）に出力するハンドラを作成
-logger = logging.getLogger(__name__)
-console_handler = logging.StreamHandler()
-console_handler.setLevel(logging.INFO)
-logger.addHandler(console_handler)
-
 # ==================================================================
 # Main
 # ==================================================================
 if __name__ == "__main__":
     try:
-        # init folders
+        # フォルダ初期化
         if not os.path.exists("./output_files"):
             os.mkdir("./output_files")
         if not os.path.exists("./output_files/json"):
@@ -516,6 +503,20 @@ if __name__ == "__main__":
         if not os.path.exists("./logs"):
             os.mkdir("./logs")
 
+        # ログ設定
+        # yyyymmdd format
+        current_date = datetime.now().strftime("%Y%m%d")
+        basicConfig(filename=f"logs/{current_date}.log", filemode='a',
+                    format='[%(asctime)s]%(levelname)-7s: %(message)s',
+                    level=INFO)
+
+        # コンソール（標準出力）に出力するハンドラを作成
+        logger = logging.getLogger(__name__)
+        console_handler = logging.StreamHandler()
+        console_handler.setLevel(logging.INFO)
+        logger.addHandler(console_handler)
+        
+        # start
         logger.info(f"{'='*10} START {'='*10}")
 
         # load config
