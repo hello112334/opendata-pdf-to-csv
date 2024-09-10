@@ -2,384 +2,388 @@
   "fileVersion": "1.1",
   "contents": [
     {
-      "url": "https://www.mhlw.go.jp/content/10800000/000876235.pdf",
       "name": "shinryoujo_1",
+      "url": "https://www.mhlw.go.jp/content/10800000/000876235.pdf",
       "catalogUrl": null,
       "catalogResourceId": null,
       "postProcesses": [],
       "headers": {}
     },
     {
-      "url": "https://www.mhlw.go.jp/content/10800000/001095355.pdf",
       "name": "shinryoujo_2",
+      "url": "https://www.mhlw.go.jp/content/10800000/001095355.pdf",
       "catalogUrl": null,
       "catalogResourceId": null,
       "postProcesses": [],
       "headers": {}
     },
     {
-      "url": "https://www.mhlw.go.jp/content/10800000/000838800.pdf",
       "name": "shinryoujo_3",
+      "url": "https://www.mhlw.go.jp/content/10800000/000838800.pdf",
       "catalogUrl": null,
       "catalogResourceId": null,
       "postProcesses": [],
       "headers": {}
     },
     {
-      "url": "https://www.mhlw.go.jp/content/10800000/000835130.pdf",
       "name": "shinryoujo_4",
+      "url": "https://www.mhlw.go.jp/content/10800000/000835130.pdf",
       "catalogUrl": null,
       "catalogResourceId": null,
       "postProcesses": [],
       "headers": {}
     },
     {
-      "url": "https://www.mhlw.go.jp/content/10800000/001202747.pdf",
       "name": "shinryoujo_5",
+      "url": "https://www.mhlw.go.jp/content/10800000/001202747.pdf",
       "catalogUrl": null,
       "catalogResourceId": null,
       "postProcesses": [],
       "headers": {}
     },
     {
-      "url": "https://www.mhlw.go.jp/content/10800000/000981552.pdf",
       "name": "shinryoujo_6",
+      "url": "https://www.mhlw.go.jp/content/10800000/000981552.pdf",
       "catalogUrl": null,
       "catalogResourceId": null,
       "postProcesses": [],
       "headers": {}
     },
     {
-      "url": "https://www.mhlw.go.jp/content/10800000/000624110.pdf",
       "name": "shinryoujo_7",
+      "url": "https://www.mhlw.go.jp/content/10800000/000624110.pdf",
       "catalogUrl": null,
       "catalogResourceId": null,
       "postProcesses": [],
       "headers": {}
     },
     {
-      "url": "https://www.mhlw.go.jp/content/10800000/000997937.pdf",
       "name": "shinryoujo_8",
+      "url": "https://www.mhlw.go.jp/content/10800000/000997937.pdf",
       "catalogUrl": null,
       "catalogResourceId": null,
       "postProcesses": [],
       "headers": {}
     },
     {
-      "url": "https://www.mhlw.go.jp/content/10800000/001065099.pdf",
       "name": "shinryoujo_9",
+      "url": "https://www.mhlw.go.jp/content/10800000/001065099.pdf",
       "catalogUrl": null,
       "catalogResourceId": null,
       "postProcesses": [],
       "headers": {}
     },
     {
-      "url": "https://www.mhlw.go.jp/content/10800000/000619186.pdf",
       "name": "shinryoujo_10",
+      "url": "https://www.mhlw.go.jp/content/10800000/000619186.pdf",
       "catalogUrl": null,
       "catalogResourceId": null,
       "postProcesses": [],
       "headers": {}
     },
     {
-      "url": "https://www.mhlw.go.jp/content/10800000/001078067.pdf",
       "name": "shinryoujo_11",
+      "url": "https://www.mhlw.go.jp/content/10800000/001078067.pdf",
       "catalogUrl": null,
       "catalogResourceId": null,
       "postProcesses": [],
       "headers": {}
     },
     {
-      "url": "https://www.mhlw.go.jp/content/10800000/000838802.pdf",
       "name": "shinryoujo_12",
+      "url": "https://www.mhlw.go.jp/content/10800000/000838802.pdf",
       "catalogUrl": null,
       "catalogResourceId": null,
       "postProcesses": [],
       "headers": {}
     },
     {
-      "url": "https://www.mhlw.go.jp/content/10800000/001262096.pdf",
       "name": "shinryoujo_13",
+      "url": "https://www.mhlw.go.jp/content/10800000/001262096.pdf",
       "catalogUrl": null,
       "catalogResourceId": null,
       "postProcesses": [],
       "headers": {}
     },
     {
-      "url": "https://www.mhlw.go.jp/content/10800000/001274641.pdf",
       "name": "shinryoujo_14",
+      "url": "https://www.mhlw.go.jp/content/10800000/001274641.pdf",
       "catalogUrl": null,
       "catalogResourceId": null,
       "postProcesses": [],
       "headers": {}
     },
     {
-      "url": "https://www.mhlw.go.jp/content/10800000/000628924.pdf",
       "name": "shinryoujo_15",
+      "url": "https://www.mhlw.go.jp/content/10800000/000628924.pdf",
       "catalogUrl": null,
       "catalogResourceId": null,
       "postProcesses": [],
       "headers": {}
     },
     {
-      "url": "https://www.mhlw.go.jp/content/10800000/001017232.pdf",
       "name": "shinryoujo_16",
+      "url": "https://www.mhlw.go.jp/content/10800000/001017232.pdf",
       "catalogUrl": null,
       "catalogResourceId": null,
       "postProcesses": [],
       "headers": {}
     },
     {
-      "url": "https://www.mhlw.go.jp/content/10800000/001036451.pdf",
       "name": "shinryoujo_17",
+      "url": "https://www.mhlw.go.jp/content/10800000/001036451.pdf",
       "catalogUrl": null,
       "catalogResourceId": null,
       "postProcesses": [],
       "headers": {}
     },
     {
-      "url": "https://www.mhlw.go.jp/content/10800000/001126805.pdf",
       "name": "shinryoujo_18",
+      "url": "https://www.mhlw.go.jp/content/10800000/001126805.pdf",
       "catalogUrl": null,
       "catalogResourceId": null,
       "postProcesses": [],
       "headers": {}
     },
     {
-      "url": "https://www.mhlw.go.jp/content/10800000/001298769.pdf",
-      "name": "shinryoujo_19",
-      "catalogUrl": null,
-      "catalogResourceId": null,
-      "postProcesses": [],
-      "headers": {}
-    },
-    {
-      "url": "https://www.mhlw.go.jp/content/10800000/001262097.pdf",
       "name": "shinryoujo_20",
+      "url": "https://www.mhlw.go.jp/content/10800000/001262097.pdf",
       "catalogUrl": null,
       "catalogResourceId": null,
       "postProcesses": [],
       "headers": {}
     },
     {
-      "url": "https://www.mhlw.go.jp/content/10800000/001176053.pdf",
       "name": "shinryoujo_21",
+      "url": "https://www.mhlw.go.jp/content/10800000/001176053.pdf",
       "catalogUrl": null,
       "catalogResourceId": null,
       "postProcesses": [],
       "headers": {}
     },
     {
-      "url": "https://www.mhlw.go.jp/content/10800000/001274642.pdf",
       "name": "shinryoujo_22",
+      "url": "https://www.mhlw.go.jp/content/10800000/001274642.pdf",
       "catalogUrl": null,
       "catalogResourceId": null,
       "postProcesses": [],
       "headers": {}
     },
     {
-      "url": "https://www.mhlw.go.jp/content/10800000/001119260.pdf",
       "name": "shinryoujo_23",
+      "url": "https://www.mhlw.go.jp/content/10800000/001119260.pdf",
       "catalogUrl": null,
       "catalogResourceId": null,
       "postProcesses": [],
       "headers": {}
     },
     {
-      "url": "https://www.mhlw.go.jp/content/10800000/000841406.pdf",
       "name": "shinryoujo_24",
+      "url": "https://www.mhlw.go.jp/content/10800000/000841406.pdf",
       "catalogUrl": null,
       "catalogResourceId": null,
       "postProcesses": [],
       "headers": {}
     },
     {
-      "url": "https://www.mhlw.go.jp/content/10800000/000680802.pdf",
       "name": "shinryoujo_25",
+      "url": "https://www.mhlw.go.jp/content/10800000/000680802.pdf",
       "catalogUrl": null,
       "catalogResourceId": null,
       "postProcesses": [],
       "headers": {}
     },
     {
-      "url": "https://www.mhlw.go.jp/content/10800000/000752223.pdf",
       "name": "shinryoujo_26",
+      "url": "https://www.mhlw.go.jp/content/10800000/000752223.pdf",
       "catalogUrl": null,
       "catalogResourceId": null,
       "postProcesses": [],
       "headers": {}
     },
     {
-      "url": "https://www.mhlw.go.jp/content/10800000/001242409.pdf",
       "name": "shinryoujo_27",
+      "url": "https://www.mhlw.go.jp/content/10800000/001242409.pdf",
       "catalogUrl": null,
       "catalogResourceId": null,
       "postProcesses": [],
       "headers": {}
     },
     {
-      "url": "https://www.mhlw.go.jp/content/10800000/000587703.pdf",
       "name": "shinryoujo_28",
+      "url": "https://www.mhlw.go.jp/content/10800000/000587703.pdf",
       "catalogUrl": null,
       "catalogResourceId": null,
       "postProcesses": [],
       "headers": {}
     },
     {
-      "url": "https://www.mhlw.go.jp/content/10800000/000946363.pdf",
       "name": "shinryoujo_29",
+      "url": "https://www.mhlw.go.jp/content/10800000/000946363.pdf",
       "catalogUrl": null,
       "catalogResourceId": null,
       "postProcesses": [],
       "headers": {}
     },
     {
-      "url": "https://www.mhlw.go.jp/content/10800000/001255493.pdf",
       "name": "shinryoujo_30",
+      "url": "https://www.mhlw.go.jp/content/10800000/001255493.pdf",
       "catalogUrl": null,
       "catalogResourceId": null,
       "postProcesses": [],
       "headers": {}
     },
     {
-      "url": "https://www.mhlw.go.jp/content/10800000/000659670.pdf",
       "name": "shinryoujo_31",
+      "url": "https://www.mhlw.go.jp/content/10800000/000659670.pdf",
       "catalogUrl": null,
       "catalogResourceId": null,
       "postProcesses": [],
       "headers": {}
     },
     {
-      "url": "https://www.mhlw.go.jp/content/10800000/001011512.pdf",
       "name": "shinryoujo_32",
+      "url": "https://www.mhlw.go.jp/content/10800000/001011512.pdf",
       "catalogUrl": null,
       "catalogResourceId": null,
       "postProcesses": [],
       "headers": {}
     },
     {
-      "url": "https://www.mhlw.go.jp/content/10800000/000588946.pdf",
       "name": "shinryoujo_33",
+      "url": "https://www.mhlw.go.jp/content/10800000/000588946.pdf",
       "catalogUrl": null,
       "catalogResourceId": null,
       "postProcesses": [],
       "headers": {}
     },
     {
-      "url": "https://www.mhlw.go.jp/content/10800000/000605683.pdf",
       "name": "shinryoujo_34",
+      "url": "https://www.mhlw.go.jp/content/10800000/000605683.pdf",
       "catalogUrl": null,
       "catalogResourceId": null,
       "postProcesses": [],
       "headers": {}
     },
     {
-      "url": "https://www.mhlw.go.jp/content/10800000/000605688.pdf",
       "name": "shinryoujo_35",
+      "url": "https://www.mhlw.go.jp/content/10800000/000605688.pdf",
       "catalogUrl": null,
       "catalogResourceId": null,
       "postProcesses": [],
       "headers": {}
     },
     {
-      "url": "https://www.mhlw.go.jp/content/10800000/000605713.pdf",
       "name": "shinryoujo_36",
+      "url": "https://www.mhlw.go.jp/content/10800000/000605713.pdf",
       "catalogUrl": null,
       "catalogResourceId": null,
       "postProcesses": [],
       "headers": {}
     },
     {
-      "url": "https://www.mhlw.go.jp/content/10800000/000619187.pdf",
       "name": "shinryoujo_37",
+      "url": "https://www.mhlw.go.jp/content/10800000/000619187.pdf",
       "catalogUrl": null,
       "catalogResourceId": null,
       "postProcesses": [],
       "headers": {}
     },
     {
-      "url": "https://www.mhlw.go.jp/content/10800000/001290007.pdf",
-      "name": "shinryoujo_38",
-      "catalogUrl": null,
-      "catalogResourceId": null,
-      "postProcesses": [],
-      "headers": {}
-    },
-    {
-      "url": "https://www.mhlw.go.jp/content/10800000/001094323.pdf",
       "name": "shinryoujo_39",
+      "url": "https://www.mhlw.go.jp/content/10800000/001094323.pdf",
       "catalogUrl": null,
       "catalogResourceId": null,
       "postProcesses": [],
       "headers": {}
     },
     {
-      "url": "https://www.mhlw.go.jp/content/10800000/000589242.pdf",
       "name": "shinryoujo_40",
+      "url": "https://www.mhlw.go.jp/content/10800000/000589242.pdf",
       "catalogUrl": null,
       "catalogResourceId": null,
       "postProcesses": [],
       "headers": {}
     },
     {
-      "url": "https://www.mhlw.go.jp/content/10800000/000985733.pdf",
       "name": "shinryoujo_41",
+      "url": "https://www.mhlw.go.jp/content/10800000/000985733.pdf",
       "catalogUrl": null,
       "catalogResourceId": null,
       "postProcesses": [],
       "headers": {}
     },
     {
-      "url": "https://www.mhlw.go.jp/content/10800000/001255492.pdf",
       "name": "shinryoujo_42",
+      "url": "https://www.mhlw.go.jp/content/10800000/001255492.pdf",
       "catalogUrl": null,
       "catalogResourceId": null,
       "postProcesses": [],
       "headers": {}
     },
     {
-      "url": "https://www.mhlw.go.jp/content/10800000/000605681.pdf",
       "name": "shinryoujo_43",
+      "url": "https://www.mhlw.go.jp/content/10800000/000605681.pdf",
       "catalogUrl": null,
       "catalogResourceId": null,
       "postProcesses": [],
       "headers": {}
     },
     {
-      "url": "https://www.mhlw.go.jp/content/10800000/000850751.pdf",
       "name": "shinryoujo_44",
+      "url": "https://www.mhlw.go.jp/content/10800000/000850751.pdf",
       "catalogUrl": null,
       "catalogResourceId": null,
       "postProcesses": [],
       "headers": {}
     },
     {
-      "url": "https://www.mhlw.go.jp/content/10800000/000591524.pdf",
       "name": "shinryoujo_45",
+      "url": "https://www.mhlw.go.jp/content/10800000/000591524.pdf",
       "catalogUrl": null,
       "catalogResourceId": null,
       "postProcesses": [],
       "headers": {}
     },
     {
-      "url": "https://www.mhlw.go.jp/content/10800000/000849991.pdf",
       "name": "shinryoujo_46",
+      "url": "https://www.mhlw.go.jp/content/10800000/000849991.pdf",
       "catalogUrl": null,
       "catalogResourceId": null,
       "postProcesses": [],
       "headers": {}
     },
     {
-      "url": "https://www.mhlw.go.jp/content/10800000/000638156.pdf",
       "name": "shinryoujo_47",
+      "url": "https://www.mhlw.go.jp/content/10800000/000638156.pdf",
       "catalogUrl": null,
       "catalogResourceId": null,
       "postProcesses": [],
       "headers": {}
     },
     {
-      "url": "https://www.post.japanpost.jp/zipcode/dl/utf/zip/utf_ken_all.zip",
       "name": "ken_all",
+      "url": "https://www.post.japanpost.jp/zipcode/dl/utf/zip/utf_ken_all.zip",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [
+        "unzip"
+      ],
+      "headers": {}
+    },
+    {
+      "name": "jigyosyo",
+      "url": "https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [
+        "unzip"
+      ],
+      "headers": {}
+    },
+    {
+      "name": "JPGIS2014",
+      "url": "https://nlftp.mlit.go.jp/ksj/gml/data/N03/N03-2024/N03-20240101_GML.zip",
       "catalogUrl": null,
       "catalogResourceId": null,
       "postProcesses": [
