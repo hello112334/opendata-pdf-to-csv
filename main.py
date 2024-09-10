@@ -4,6 +4,7 @@ import os
 import requests
 import re
 import xml.etree.ElementTree as ET
+import sys
 import codecs
 
 
@@ -209,8 +210,14 @@ def get_first_page(first_table, prefecture_name):
     data = first_table[row+1:]
     return headers, data
 
+# usage: python main.py               # output csv files (default)
+# usage: python main.py --output-json # output json files
+def main(argv):
+    if argv[0] == '--output-json':
+        print("Exporting to JSON files...")
+    else:
+        print("Exporting to CSV files...")
 
-def main():
     for i, prefecture in enumerate(PREFECTURES, 1):
         prefecture_name = get_prefecture_name(prefecture)
         print(f"PREFECTURE_NUMBER {i}: {prefecture_name} ({prefecture})")
@@ -278,10 +285,17 @@ def main():
                     df["市町村コード"] = df.apply(
                         lambda x: address2location_code(x["都道府県"], x["市町村"]), axis=1)
 
-            # CSVファイルに出力
-            prefecture_number_str = str(i).zfill(2)
-            output_file_path = f"./output_files/{prefecture_number_str}_{prefecture}.csv"
-            df.to_csv(output_file_path, header=True, index=False)
+            if argv[0] == '--output-json':
+                # JSONファイルに出力
+                prefecture_number_str = str(i).zfill(2)
+                output_file_path = f"./output_files/json/{prefecture_number_str}_{prefecture}.json"
+                df.to_json(output_file_path, orient='records', force_ascii=False)
+            else:
+                # CSVファイルに出力
+                prefecture_number_str = str(i).zfill(2)
+                output_file_path = f"./output_files/{prefecture_number_str}_{prefecture}.csv"
+                df.to_csv(output_file_path, header=True, index=False)
+
 
         except Exception as e:
             print(f"Error: {e}")
@@ -291,6 +305,8 @@ if __name__ == "__main__":
     try:
         if not os.path.exists("./output_files"):
             os.mkdir("./output_files")
-        main()
+        if not os.path.exists("./output_files/json"):
+            os.mkdir("./output_files/json")
+        main(sys.argv[1:] or [''])
     except Exception as e:
         print(f"Error: {e}")
