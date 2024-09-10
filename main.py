@@ -546,6 +546,8 @@ if __name__ == "__main__":
             os.mkdir("./output_files")
         if not os.path.exists("./output_files/json"):
             os.mkdir("./output_files/json")
+        if not os.path.exists("./logs"):
+            os.mkdir("./logs")
 
         # 出力確認
         argv = sys.argv[1:] or ['']
