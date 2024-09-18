@@ -37,7 +37,7 @@ jobs:
       with:
         python-version: "3.11.9"
     - name: Install Python dependencies
-      run: pip install tabula-py pandas pdfplumber requests
+      run: pip install tabula-py pandas pdfplumber requests geopandas jageocoder
     - name: PDF to CSV
       run: python main.py
     - name: Commit data files
