@@ -386,26 +386,6 @@
         "unzip"
       ],
       "headers": {}
-    },
-    {
-      "name": "jigyosyo",
-      "url": "https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip",
-      "catalogUrl": null,
-      "catalogResourceId": null,
-      "postProcesses": [
-        "unzip"
-      ],
-      "headers": {}
-    },
-    {
-      "name": "JPGIS2014",
-      "url": "https://nlftp.mlit.go.jp/ksj/gml/data/N03/N03-2024/N03-20240101_GML.zip",
-      "catalogUrl": null,
-      "catalogResourceId": null,
-      "postProcesses": [
-        "unzip"
-      ],
-      "headers": {}
     }
   ]
 }
