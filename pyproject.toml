@@ -12,7 +12,8 @@ tabula-py = "^2.9.0"
 pandas = "^2.2.0"
 pdfplumber = "^0.11.1"
 requests = "^2.32.3"
-
+jageocoder = "^2.1.7.post1"
+geopandas = "^1.0.1"
 
 [build-system]
 requires = ["poetry-core"]
