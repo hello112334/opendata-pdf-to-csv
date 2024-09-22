@@ -200,8 +200,10 @@ def clear_change_line(df):
     df.replace('"', '', regex=True, inplace=True)
 
     # 時間表記の「~」を「-」に変換
+    hyphens = ['-', '˗', 'ᅳ', '᭸', '‐', '‑', '‒', '–', '—', '―', '⁃', '⁻', '−', '▬', '─', '━', '➖', 'ー', 'ㅡ', '﹘', '﹣', '－', 'ｰ', '𐄐', '𐆑', ' ']
     df.replace('~', '-', regex=True, inplace=True)
     df.replace('〜', '-', regex=True, inplace=True)
+    df.replace(hyphens, '-', regex=True, inplace=True)
 
     # 全角を半角に変換する
     df = df.apply(lambda x: x.map(zenkaku_to_hankaku_regex))
@@ -515,7 +517,7 @@ if __name__ == "__main__":
         console_handler = logging.StreamHandler()
         console_handler.setLevel(logging.INFO)
         logger.addHandler(console_handler)
-        
+
         # start
         logger.info(f"{'='*10} START {'='*10}")
 
