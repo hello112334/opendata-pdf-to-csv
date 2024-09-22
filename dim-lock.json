@@ -626,6 +626,36 @@
         "unzip"
       ],
       "headers": {}
+    },
+    {
+      "name": "jigyosyo",
+      "url": "https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip",
+      "path": "./data_files/jigyosyo/jigyosyo.zip",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "lastModified": "2024-08-30T07:59:01.000Z",
+      "eTag": null,
+      "lastDownloaded": "2024-09-22T13:31:18.041Z",
+      "integrity": "f5f50c0bd01e99f8ca28e6d0b29f85c90774fefc",
+      "postProcesses": [
+        "unzip"
+      ],
+      "headers": {}
+    },
+    {
+      "name": "JPGIS2014",
+      "url": "https://nlftp.mlit.go.jp/ksj/gml/data/N03/N03-2024/N03-20240101_GML.zip",
+      "path": "./data_files/JPGIS2014/N03-20240101_GML.zip",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "lastModified": "2024-06-10T02:15:28.000Z",
+      "eTag": "2471ed71-61a7fb90bf000",
+      "lastDownloaded": "2024-09-22T13:32:45.319Z",
+      "integrity": "d1046ed61d407d21b39bddce3af7847a95120b62",
+      "postProcesses": [
+        "unzip"
+      ],
+      "headers": {}
     }
   ]
 }

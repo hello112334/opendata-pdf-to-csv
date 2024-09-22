@@ -32,6 +32,10 @@ jobs:
       run: dim uninstall shinryoujo_48 && dim uninstall shinryoujo_49
     - name: Install ken all
       run: dim install https://www.post.japanpost.jp/zipcode/dl/utf/zip/utf_ken_all.zip -p unzip -n "ken_all"
+    - name: Install jigyosyo
+      run: dim install https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip -p unzip -n "jigyosyo"
+    - name: Install JPGIS
+      run: dim install https://nlftp.mlit.go.jp/ksj/gml/data/N03/N03-2024/N03-20240101_GML.zip -p unzip -n "JPGIS2014"
     - name: Setup Python
       uses: actions/setup-python@v1
       with:
