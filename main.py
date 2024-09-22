@@ -11,6 +11,8 @@ import jageocoder
 from enum import Enum
 from datetime import datetime
 
+from urllib.parse import urlparse
+
 # 緯度経度ダブルチェック
 import geopandas as gpd
 from shapely.geometry import Point
@@ -151,6 +153,27 @@ def postal2location(postal_code):
         city_code = convert_five_to_six_digit_code(tmp_code)
 
     return prefecture, city, city_code
+
+
+def is_valid_url(url):
+    if not urlparse(url).scheme:
+        url = 'https://' + url
+    try:
+        result = urlparse(url)
+        return all([result.scheme, result.netloc])
+    except ValueError:
+        return False
+
+
+def is_accessible_url(url):
+    if not urlparse(url).scheme:
+        url = 'https://' + url
+    try:
+        response = requests.head(url, allow_redirects=True, timeout=5)
+        # ステータスコードが200番台または300番台であればアクセス可能と判断
+        return response.status_code < 400
+    except requests.RequestException:
+        return False
 
 
 def delete_title(df):
@@ -363,7 +386,7 @@ def add_error_message(row, error_message):
 
     row["エラー"] = f"{row['エラー']}, {error_message}" if row["エラー"] else error_message
     logger.error(
-        f"[{error_message}] {row['施設_名称']}: 都道府県:{row['住所_都道府県']}, 市区町村:{row['住所_市区町村（郡）']} 緯度経度({row['住所_緯度']},{row['住所_経度']})")
+        f"[{error_message}] {row['施設_名称']}: 都道府県:{row['住所_都道府県']}, 市区町村:{row['住所_市区町村（郡）']} 緯度経度({row['住所_緯度']},{row['住所_経度']}) 連絡先_FormURL:{row['連絡先_FormURL']}")
 
     return row["エラー"]
 
@@ -445,6 +468,22 @@ def main(i, prefecture, argv):
             df["エラー"] = df.apply(
                 lambda x: add_error_message(x, ERROR_LIST.LAT_LON_ERROR.value) if x["住所_緯度"] == "0" and x["住所_経度"] == "0" else x["エラー"], axis=1)
 
+        if "連絡先_FormURL" in df.columns:
+            # URLが有効かどうかを確認
+            df["エラー"] = df.apply(
+                lambda x: add_error_message(x, ERROR_LIST.URL_INVALID.value)
+                if x["連絡先_FormURL"] != '' and not is_valid_url(x["連絡先_FormURL"])
+                else x["エラー"],
+                axis=1
+            )
+
+            df["エラー"] = df.apply(
+                lambda x: add_error_message(x, ERROR_LIST.URL_EXPIRED.value)
+                if x["連絡先_FormURL"] != '' and not is_accessible_url(x["連絡先_FormURL"])
+                else x["エラー"],
+                axis=1
+            )
+
         # 列を並び替える
         df = reorder_columns(df)
 
@@ -485,7 +524,7 @@ class ERROR_LIST(Enum):
     GOOGLE_LAT_LON_ERROR = "緯度経度(Googleエラー)"
     # Google APIで緯度経度を取得する際、返却値がない場合や2値以上の返却値がある
 
-    URL_READ = "URL(読み取り)"
+    URL_INVALID = "URL(無効なURL)"
     # 産科、婦人科又は産婦人科の標榜の有無のカラム内にpやmが入り込んでいる(?)
 
     URL_EXPIRED = "URL(リンク切れ)"
