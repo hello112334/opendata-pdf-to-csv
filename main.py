@@ -217,7 +217,7 @@ def clear_change_line(df):
     行の表記を統一する処理
     """
     # 改行コードを削除
-    df.replace(r'\r\n|\r|\n', '', regex=True, inplace=True)
+    df[['施設_名称', '連絡先_電話番号', '連絡先_FormURL', '連絡先_郵便番号', '連絡先_住所', '緊急避妊に係る診療が可能な産婦人科医療機関等_産科、婦人科又は産婦人科の標榜の有無', '緊急避妊に係る診療が可能な産婦人科医療機関等_常時の緊急避妊薬の在庫の有無']].replace(r'\r\n|\r|\n', '', regex=True, inplace=True)
 
     # "を削除
     df.replace('"', '', regex=True, inplace=True)
