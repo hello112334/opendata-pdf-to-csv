@@ -44,6 +44,8 @@ jobs:
       run: pip install tabula-py pandas pdfplumber requests geopandas jageocoder
     - name: PDF to CSV
       run: python main.py
+    - name: delete files
+      run: rm -rf ./data_files/JPGIS2014
     - name: Commit data files
       run: |
         git config --local user.email "action@github.com"
