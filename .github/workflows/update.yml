@@ -41,7 +41,7 @@ jobs:
     - name: Setup Python
       uses: actions/setup-python@v1
       with:
-        python-version: "3.11.10"
+        python-version: "3.11.11"
     - name: Install Python dependencies
       run: pip install tabula-py pandas pdfplumber requests geopandas jageocoder
     - name: PDF to CSV
