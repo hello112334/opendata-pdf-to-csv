@@ -28,8 +28,10 @@ jobs:
       run: dim init
     - name: Install shinryoujo data
       run: dim install -P https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000186912_00002.html -e ".pdf" -n "shinryoujo"
+    - name: Install Yakkyoku data
+      run: dim install -P https://www.mhlw.go.jp/stf/kinnkyuuhininnyaku.html -e ".xlsx" -n "shinryoujo"
     - name: Uninstall without using data
-      run: dim uninstall shinryoujo_48 && dim uninstall shinryoujo_49
+      run: dim uninstall shinryoujo_48 && dim uninstall shinryoujo_49 && dim uninstall yakkyoku_48
     - name: Install ken all
       run: dim install https://www.post.japanpost.jp/zipcode/dl/utf/zip/utf_ken_all.zip -p unzip -n "ken_all"
     - name: Install jigyosyo
@@ -43,7 +45,7 @@ jobs:
     - name: Install Python dependencies
       run: pip install tabula-py pandas pdfplumber requests geopandas jageocoder
     - name: PDF to CSV
-      run: python main.py
+      run: python main.py && python pharmacy.py
     - name: delete files
       run: rm -rf ./data_files/JPGIS2014
     - name: Commit data files
