@@ -1,0 +1,411 @@
+{
+  "fileVersion": "1.1",
+  "contents": [
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425201.xlsx",
+      "name": "shinryoujo_1",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425209.xlsx",
+      "name": "shinryoujo_2",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425214.xlsx",
+      "name": "shinryoujo_3",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425221.xlsx",
+      "name": "shinryoujo_4",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425223.xlsx",
+      "name": "shinryoujo_5",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425227.xlsx",
+      "name": "shinryoujo_6",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425229.xlsx",
+      "name": "shinryoujo_7",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425231.xlsx",
+      "name": "shinryoujo_8",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425237.xlsx",
+      "name": "shinryoujo_9",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425239.xlsx",
+      "name": "shinryoujo_10",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425241.xlsx",
+      "name": "shinryoujo_11",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425245.xlsx",
+      "name": "shinryoujo_12",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425247.xlsx",
+      "name": "shinryoujo_13",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425251.xlsx",
+      "name": "shinryoujo_14",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425253.xlsx",
+      "name": "shinryoujo_15",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425256.xlsx",
+      "name": "shinryoujo_16",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425258.xlsx",
+      "name": "shinryoujo_17",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425260.xlsx",
+      "name": "shinryoujo_18",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425266.xlsx",
+      "name": "shinryoujo_19",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425270.xlsx",
+      "name": "shinryoujo_20",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425272.xlsx",
+      "name": "shinryoujo_21",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425275.xlsx",
+      "name": "shinryoujo_22",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425277.xlsx",
+      "name": "shinryoujo_23",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425279.xlsx",
+      "name": "shinryoujo_24",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425283.xlsx",
+      "name": "shinryoujo_25",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425285.xlsx",
+      "name": "shinryoujo_26",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425300.xlsx",
+      "name": "shinryoujo_27",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425303.xlsx",
+      "name": "shinryoujo_28",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425308.xlsx",
+      "name": "shinryoujo_29",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425313.xlsx",
+      "name": "shinryoujo_30",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425319.xlsx",
+      "name": "shinryoujo_31",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425323.xlsx",
+      "name": "shinryoujo_32",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425325.xlsx",
+      "name": "shinryoujo_33",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425327.xlsx",
+      "name": "shinryoujo_34",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425329.xlsx",
+      "name": "shinryoujo_35",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425331.xlsx",
+      "name": "shinryoujo_36",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425333.xlsx",
+      "name": "shinryoujo_37",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425337.xlsx",
+      "name": "shinryoujo_38",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425339.xlsx",
+      "name": "shinryoujo_39",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425341.xlsx",
+      "name": "shinryoujo_40",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425345.xlsx",
+      "name": "shinryoujo_41",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425348.xlsx",
+      "name": "shinryoujo_42",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425352.xlsx",
+      "name": "shinryoujo_43",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425356.xlsx",
+      "name": "shinryoujo_44",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425358.xlsx",
+      "name": "shinryoujo_45",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425360.xlsx",
+      "name": "shinryoujo_46",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/11120000/001425362.xlsx",
+      "name": "shinryoujo_47",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
+      "url": "https://www.post.japanpost.jp/zipcode/dl/utf/zip/utf_ken_all.zip",
+      "name": "ken_all",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [
+        "unzip"
+      ],
+      "headers": {}
+    },
+    {
+      "url": "https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip",
+      "name": "jigyosyo",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [
+        "unzip"
+      ],
+      "headers": {}
+    },
+    {
+      "url": "https://nlftp.mlit.go.jp/ksj/gml/data/N03/N03-2024/N03-20240101_GML.zip",
+      "name": "JPGIS2014",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [
+        "unzip"
+      ],
+      "headers": {}
+    }
+  ]
+}
