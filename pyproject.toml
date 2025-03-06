@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "opendata-pdf-to-csv"
+version = "0.1.0"
+description = ""
+authors = ["ryo-ma <saka_ro@yahoo.co.jp>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+tabula-py = "^2.9.0"
+pandas = "^2.2.0"
+pdfplumber = "^0.11.1"
+requests = "^2.32.3"
+geopandas = "^1.0.1"
+jageocoder = "^2.1.7.post1"
+openpyxl = "^3.1.5"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
