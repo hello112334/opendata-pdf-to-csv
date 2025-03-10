@@ -9,7 +9,7 @@
       "catalogResourceId": null,
       "lastModified": "2025-02-27T04:59:55.000Z",
       "eTag": "3258e-62f188f97f555",
-      "lastDownloaded": "2025-03-09T00:59:27.205Z",
+      "lastDownloaded": "2025-03-10T00:58:06.892Z",
       "integrity": "a7b93772a8c6063e73915a2d4a243590d5e70533",
       "postProcesses": [],
       "headers": {}
@@ -21,8 +21,8 @@
       "catalogUrl": null,
       "catalogResourceId": null,
       "lastModified": "2025-02-27T04:59:38.000Z",
-      "eTag": "e4b1-62f188e9fb583",
-      "lastDownloaded": "2025-03-09T00:59:27.438Z",
+      "eTag": "e4b1-62f188ea0cb0d",
+      "lastDownloaded": "2025-03-10T00:58:07.343Z",
       "integrity": "a112f325f9fea4c2ba73733000f7be7ec4a8ec3b",
       "postProcesses": [],
       "headers": {}
@@ -35,7 +35,7 @@
       "catalogResourceId": null,
       "lastModified": "2025-02-27T04:59:31.000Z",
       "eTag": "c714-62f188e293945",
-      "lastDownloaded": "2025-03-09T00:59:27.708Z",
+      "lastDownloaded": "2025-03-10T00:58:07.719Z",
       "integrity": "e52552650da14bd0d6be6d0c6668440395660fc6",
       "postProcesses": [],
       "headers": {}
@@ -47,8 +47,8 @@
       "catalogUrl": null,
       "catalogResourceId": null,
       "lastModified": "2025-02-27T04:59:13.000Z",
-      "eTag": "1b8ab-62f188d20925e",
-      "lastDownloaded": "2025-03-09T00:59:28.034Z",
+      "eTag": "1b8ab-62f188d1f6d2a",
+      "lastDownloaded": "2025-03-10T00:58:08.059Z",
       "integrity": "d31103cc7bb91fdfba8e8dc869a1e3d8258b41d0",
       "postProcesses": [],
       "headers": {}
@@ -61,7 +61,7 @@
       "catalogResourceId": null,
       "lastModified": "2025-02-27T04:59:02.000Z",
       "eTag": "9f65-62f188c7770ab",
-      "lastDownloaded": "2025-03-09T00:59:28.291Z",
+      "lastDownloaded": "2025-03-10T00:58:08.439Z",
       "integrity": "41940632972585febc1ea44ab8061582e1149a11",
       "postProcesses": [],
       "headers": {}
@@ -74,7 +74,7 @@
       "catalogResourceId": null,
       "lastModified": "2025-02-27T04:58:53.000Z",
       "eTag": "c413-62f188be6ad91",
-      "lastDownloaded": "2025-03-09T00:59:28.466Z",
+      "lastDownloaded": "2025-03-10T00:58:08.780Z",
       "integrity": "9db7638b5bcb6774a0b6a9df304cc7d17b9c2992",
       "postProcesses": [],
       "headers": {}
@@ -87,7 +87,7 @@
       "catalogResourceId": null,
       "lastModified": "2025-02-27T04:58:58.000Z",
       "eTag": "102c2-62f188c353f20",
-      "lastDownloaded": "2025-03-09T00:59:28.653Z",
+      "lastDownloaded": "2025-03-10T00:58:09.196Z",
       "integrity": "fb0cd61e685bb198ee9da49c96d19fc906bdb5e6",
       "postProcesses": [],
       "headers": {}
@@ -100,7 +100,7 @@
       "catalogResourceId": null,
       "lastModified": "2025-02-27T04:58:43.000Z",
       "eTag": "19df2-62f188b4d1cce",
-      "lastDownloaded": "2025-03-09T00:59:28.900Z",
+      "lastDownloaded": "2025-03-10T00:58:09.542Z",
       "integrity": "47da0e23eb718bb5eeaa66ae78b7d54044b21094",
       "postProcesses": [],
       "headers": {}
@@ -112,8 +112,8 @@
       "catalogUrl": null,
       "catalogResourceId": null,
       "lastModified": "2025-02-27T04:58:19.000Z",
-      "eTag": "110ae-62f1889de29be",
-      "lastDownloaded": "2025-03-09T00:59:29.088Z",
+      "eTag": "110ae-62f1889df5ea7",
+      "lastDownloaded": "2025-03-10T00:58:09.898Z",
       "integrity": "e2d28360a0a22b2c2611ca91d1c213c5a5af4a85",
       "postProcesses": [],
       "headers": {}
@@ -126,7 +126,7 @@
       "catalogResourceId": null,
       "lastModified": "2025-02-27T04:58:25.000Z",
       "eTag": "f9ca-62f188a3bd2ef",
-      "lastDownloaded": "2025-03-09T00:59:29.277Z",
+      "lastDownloaded": "2025-03-10T00:58:10.286Z",
       "integrity": "20deb27a000484c1ac3c0adb271e681fb62457e7",
       "postProcesses": [],
       "headers": {}
@@ -139,7 +139,7 @@
       "catalogResourceId": null,
       "lastModified": "2025-02-27T05:00:05.000Z",
       "eTag": "2db65-62f18902fb582",
-      "lastDownloaded": "2025-03-09T00:59:29.474Z",
+      "lastDownloaded": "2025-03-10T00:58:10.721Z",
       "integrity": "ae8092f9f6d25e9183c87e3f7ddc724a8ec8075c",
       "postProcesses": [],
       "headers": {}
@@ -152,7 +152,7 @@
       "catalogResourceId": null,
       "lastModified": "2025-02-27T04:59:54.000Z",
       "eTag": "2c585-62f188f88bad8",
-      "lastDownloaded": "2025-03-09T00:59:29.702Z",
+      "lastDownloaded": "2025-03-10T00:58:11.192Z",
       "integrity": "615e2f0bdc678f06a946be2a2be2c37221432307",
       "postProcesses": [],
       "headers": {}
@@ -165,7 +165,7 @@
       "catalogResourceId": null,
       "lastModified": "2025-02-27T04:59:58.000Z",
       "eTag": "5295a-62f188fcbc311",
-      "lastDownloaded": "2025-03-09T00:59:29.942Z",
+      "lastDownloaded": "2025-03-10T00:58:11.527Z",
       "integrity": "c2de315cd7054be3905858b37c12d77c91e1d4b0",
       "postProcesses": [],
       "headers": {}
@@ -178,7 +178,7 @@
       "catalogResourceId": null,
       "lastModified": "2025-02-27T04:59:32.000Z",
       "eTag": "3b0a8-62f188e387b5f",
-      "lastDownloaded": "2025-03-09T00:59:30.147Z",
+      "lastDownloaded": "2025-03-10T00:58:11.904Z",
       "integrity": "4f44731e4982421e9921b890c3717979f7c40c96",
       "postProcesses": [],
       "headers": {}
@@ -190,8 +190,8 @@
       "catalogUrl": null,
       "catalogResourceId": null,
       "lastModified": "2025-02-27T04:59:34.000Z",
-      "eTag": "8f1d-62f188e5fb67a",
-      "lastDownloaded": "2025-03-09T00:59:30.373Z",
+      "eTag": "8f1d-62f188e611a26",
+      "lastDownloaded": "2025-03-10T00:58:12.311Z",
       "integrity": "d0f8483df32fd65a5c53bdee681a02427443dc5b",
       "postProcesses": [],
       "headers": {}
@@ -204,7 +204,7 @@
       "catalogResourceId": null,
       "lastModified": "2025-02-27T04:59:26.000Z",
       "eTag": "17562-62f188de7afb3",
-      "lastDownloaded": "2025-03-09T00:59:30.580Z",
+      "lastDownloaded": "2025-03-10T00:58:12.651Z",
       "integrity": "d71c0498ab2441af9145492018ea563a176a4027",
       "postProcesses": [],
       "headers": {}
@@ -217,7 +217,7 @@
       "catalogResourceId": null,
       "lastModified": "2025-02-27T04:59:30.000Z",
       "eTag": "b144-62f188e1a1dd3",
-      "lastDownloaded": "2025-03-09T00:59:30.788Z",
+      "lastDownloaded": "2025-03-10T00:58:13.069Z",
       "integrity": "171892b2dbf49dea7e3e23354a86507699b41342",
       "postProcesses": [],
       "headers": {}
@@ -230,7 +230,7 @@
       "catalogResourceId": null,
       "lastModified": "2025-02-27T04:58:59.000Z",
       "eTag": "c1f7-62f188c44e316",
-      "lastDownloaded": "2025-03-09T00:59:30.996Z",
+      "lastDownloaded": "2025-03-10T00:58:13.441Z",
       "integrity": "44bf52fc14cbe7ac6b15ccd99b7e4b09f5e56db2",
       "postProcesses": [],
       "headers": {}
@@ -242,8 +242,8 @@
       "catalogUrl": null,
       "catalogResourceId": null,
       "lastModified": "2025-02-27T04:59:01.000Z",
-      "eTag": "70ec-62f188c68556e",
-      "lastDownloaded": "2025-03-09T00:59:31.178Z",
+      "eTag": "70ec-62f188c697e8e",
+      "lastDownloaded": "2025-03-10T00:58:13.780Z",
       "integrity": "11dd64a606bb3bf532f84090f6fdba2e12d528ff",
       "postProcesses": [],
       "headers": {}
@@ -256,7 +256,7 @@
       "catalogResourceId": null,
       "lastModified": "2025-02-27T04:58:26.000Z",
       "eTag": "1869e-62f188a4a84b4",
-      "lastDownloaded": "2025-03-09T00:59:31.357Z",
+      "lastDownloaded": "2025-03-10T00:58:14.129Z",
       "integrity": "cddba3575e3f99a4e2b6b4a38dcf0fa32fe1c183",
       "postProcesses": [],
       "headers": {}
@@ -269,7 +269,7 @@
       "catalogResourceId": null,
       "lastModified": "2025-02-27T04:58:28.000Z",
       "eTag": "e4b6-62f188a6d1fe6",
-      "lastDownloaded": "2025-03-09T00:59:31.542Z",
+      "lastDownloaded": "2025-03-10T00:58:14.471Z",
       "integrity": "6c39a2968b040e1cfbadf46d0816a1de512634c7",
       "postProcesses": [],
       "headers": {}
@@ -282,7 +282,7 @@
       "catalogResourceId": null,
       "lastModified": "2025-02-27T04:58:44.000Z",
       "eTag": "12586-62f188b68bed8",
-      "lastDownloaded": "2025-03-09T00:59:31.737Z",
+      "lastDownloaded": "2025-03-10T00:58:14.813Z",
       "integrity": "3c274e02970aa58000b332844a5c34369837995a",
       "postProcesses": [],
       "headers": {}
@@ -295,7 +295,7 @@
       "catalogResourceId": null,
       "lastModified": "2025-02-27T04:58:29.000Z",
       "eTag": "25bbf-62f188a7d11fd",
-      "lastDownloaded": "2025-03-09T00:59:31.949Z",
+      "lastDownloaded": "2025-03-10T00:58:15.178Z",
       "integrity": "651dddffe91148bd59c5c3a2f0cfc029ac3604b4",
       "postProcesses": [],
       "headers": {}
@@ -308,7 +308,7 @@
       "catalogResourceId": null,
       "lastModified": "2025-02-27T04:58:35.000Z",
       "eTag": "d59a-62f188ada41c8",
-      "lastDownloaded": "2025-03-09T00:59:32.134Z",
+      "lastDownloaded": "2025-03-10T00:58:15.561Z",
       "integrity": "4d1b4b61d61e191ebb269390d5ece9f113298c04",
       "postProcesses": [],
       "headers": {}
@@ -321,7 +321,7 @@
       "catalogResourceId": null,
       "lastModified": "2025-02-27T04:59:50.000Z",
       "eTag": "d61e-62f188f4dc4b8",
-      "lastDownloaded": "2025-03-09T00:59:32.314Z",
+      "lastDownloaded": "2025-03-10T00:58:15.908Z",
       "integrity": "38e2876080d31d4e28f43a83aee2e38ba8d5f490",
       "postProcesses": [],
       "headers": {}
@@ -334,7 +334,7 @@
       "catalogResourceId": null,
       "lastModified": "2025-02-27T05:00:06.000Z",
       "eTag": "168ca-62f18904c49dc",
-      "lastDownloaded": "2025-03-09T00:59:32.502Z",
+      "lastDownloaded": "2025-03-10T00:58:16.248Z",
       "integrity": "badb54becb2e738719c24bee2724921fde061f44",
       "postProcesses": [],
       "headers": {}
@@ -346,8 +346,8 @@
       "catalogUrl": null,
       "catalogResourceId": null,
       "lastModified": "2025-02-27T04:59:05.000Z",
-      "eTag": "53750-62f188c9c13b4",
-      "lastDownloaded": "2025-03-09T00:59:32.699Z",
+      "eTag": "53750-62f188c9d582b",
+      "lastDownloaded": "2025-03-10T00:58:16.582Z",
       "integrity": "63350650871ac72c60ae56cba9602970fc4df3dc",
       "postProcesses": [],
       "headers": {}
@@ -360,7 +360,7 @@
       "catalogResourceId": null,
       "lastModified": "2025-02-27T04:58:52.000Z",
       "eTag": "33370-62f188bd84dd4",
-      "lastDownloaded": "2025-03-09T00:59:32.940Z",
+      "lastDownloaded": "2025-03-10T00:58:16.930Z",
       "integrity": "bfbfb804885b6280e398fa8aa5c5a5574636d2a4",
       "postProcesses": [],
       "headers": {}
@@ -373,7 +373,7 @@
       "catalogResourceId": null,
       "lastModified": "2025-02-27T04:58:48.000Z",
       "eTag": "ced8-62f188ba03642",
-      "lastDownloaded": "2025-03-09T00:59:33.122Z",
+      "lastDownloaded": "2025-03-10T00:58:17.261Z",
       "integrity": "82909b6a0531e3130989652061e4c261092b2036",
       "postProcesses": [],
       "headers": {}
@@ -385,8 +385,8 @@
       "catalogUrl": null,
       "catalogResourceId": null,
       "lastModified": "2025-02-27T04:58:37.000Z",
-      "eTag": "ae69-62f188afd5e78",
-      "lastDownloaded": "2025-03-09T00:59:33.305Z",
+      "eTag": "ae69-62f188afc4107",
+      "lastDownloaded": "2025-03-10T00:58:17.615Z",
       "integrity": "2ac9848104d2039ea7262873aae57f638415b5a8",
       "postProcesses": [],
       "headers": {}
@@ -399,7 +399,7 @@
       "catalogResourceId": null,
       "lastModified": "2025-02-27T04:58:18.000Z",
       "eTag": "7bba-62f1889cf0e80",
-      "lastDownloaded": "2025-03-09T00:59:33.496Z",
+      "lastDownloaded": "2025-03-10T00:58:17.951Z",
       "integrity": "6d03c6802d99cfcd019fc9765a0efca7c0d1756d",
       "postProcesses": [],
       "headers": {}
@@ -411,8 +411,8 @@
       "catalogUrl": null,
       "catalogResourceId": null,
       "lastModified": "2025-02-27T04:59:57.000Z",
-      "eTag": "9e3e-62f188fbdfbd6",
-      "lastDownloaded": "2025-03-09T00:59:33.706Z",
+      "eTag": "9e3e-62f188fbcc713",
+      "lastDownloaded": "2025-03-10T00:58:18.364Z",
       "integrity": "fa46cf84c912d5bec272e413a931c8cba2333b7f",
       "postProcesses": [],
       "headers": {}
@@ -424,8 +424,8 @@
       "catalogUrl": null,
       "catalogResourceId": null,
       "lastModified": "2025-02-27T04:59:43.000Z",
-      "eTag": "132bb-62f188ee3278f",
-      "lastDownloaded": "2025-03-09T00:59:33.905Z",
+      "eTag": "132bb-62f188ee20e1f",
+      "lastDownloaded": "2025-03-10T00:58:18.813Z",
       "integrity": "bf1c9b6170510ca908c4df890232377cc34e6823",
       "postProcesses": [],
       "headers": {}
@@ -437,8 +437,8 @@
       "catalogUrl": null,
       "catalogResourceId": null,
       "lastModified": "2025-02-27T04:59:45.000Z",
-      "eTag": "1a05d-62f188f053a26",
-      "lastDownloaded": "2025-03-09T00:59:34.100Z",
+      "eTag": "1a05d-62f188f0676be",
+      "lastDownloaded": "2025-03-10T00:58:19.160Z",
       "integrity": "82429f74fdce6b15af6c99035b8bd380188358eb",
       "postProcesses": [],
       "headers": {}
@@ -451,7 +451,7 @@
       "catalogResourceId": null,
       "lastModified": "2025-02-27T04:59:37.000Z",
       "eTag": "11531-62f188e90ec4e",
-      "lastDownloaded": "2025-03-09T00:59:34.298Z",
+      "lastDownloaded": "2025-03-10T00:58:19.646Z",
       "integrity": "1b2b5342856143692e466d3fe70353452f3160a6",
       "postProcesses": [],
       "headers": {}
@@ -463,8 +463,8 @@
       "catalogUrl": null,
       "catalogResourceId": null,
       "lastModified": "2025-02-27T04:59:36.000Z",
-      "eTag": "a4a2-62f188e82ea51",
-      "lastDownloaded": "2025-03-09T00:59:34.497Z",
+      "eTag": "a4a2-62f188e83fbf4",
+      "lastDownloaded": "2025-03-10T00:58:20.019Z",
       "integrity": "9ce54581637e4c4ba3ff1c17a8f65ed8c105e8f8",
       "postProcesses": [],
       "headers": {}
@@ -477,7 +477,7 @@
       "catalogResourceId": null,
       "lastModified": "2025-02-27T04:59:27.000Z",
       "eTag": "e062-62f188df5f7cb",
-      "lastDownloaded": "2025-03-09T00:59:34.722Z",
+      "lastDownloaded": "2025-03-10T00:58:20.405Z",
       "integrity": "20ac6563db4101d5d2a519d820f65eb70f2968ef",
       "postProcesses": [],
       "headers": {}
@@ -490,7 +490,7 @@
       "catalogResourceId": null,
       "lastModified": "2025-02-27T04:59:19.000Z",
       "eTag": "b086-62f188d71d755",
-      "lastDownloaded": "2025-03-09T00:59:34.945Z",
+      "lastDownloaded": "2025-03-10T00:58:20.754Z",
       "integrity": "0b9cb9ab8ebb320e88dea192ad38298cc2168906",
       "postProcesses": [],
       "headers": {}
@@ -502,8 +502,8 @@
       "catalogUrl": null,
       "catalogResourceId": null,
       "lastModified": "2025-02-27T04:59:21.000Z",
-      "eTag": "8f0e-62f188d962c3c",
-      "lastDownloaded": "2025-03-09T00:59:35.132Z",
+      "eTag": "8f0e-62f188d94c0bc",
+      "lastDownloaded": "2025-03-10T00:58:21.130Z",
       "integrity": "402567f9eb1871ab8a89f9e8978dd320a47f16b2",
       "postProcesses": [],
       "headers": {}
@@ -515,8 +515,8 @@
       "catalogUrl": null,
       "catalogResourceId": null,
       "lastModified": "2025-02-27T04:59:12.000Z",
-      "eTag": "1517e-62f188d103e65",
-      "lastDownloaded": "2025-03-09T00:59:35.389Z",
+      "eTag": "1517e-62f188d11d0f9",
+      "lastDownloaded": "2025-03-10T00:58:21.470Z",
       "integrity": "0a05e474fa1c8bfe7301ffc9af19efba3e313a10",
       "postProcesses": [],
       "headers": {}
@@ -529,7 +529,7 @@
       "catalogResourceId": null,
       "lastModified": "2025-02-27T04:59:06.000Z",
       "eTag": "a04b-62f188cac0dd8",
-      "lastDownloaded": "2025-03-09T00:59:35.590Z",
+      "lastDownloaded": "2025-03-10T00:58:21.836Z",
       "integrity": "011ebcc38af68454e0bc1666cc22a60d60341a1a",
       "postProcesses": [],
       "headers": {}
@@ -542,7 +542,7 @@
       "catalogResourceId": null,
       "lastModified": "2025-02-27T04:58:54.000Z",
       "eTag": "f5cf-62f188bf60b37",
-      "lastDownloaded": "2025-03-09T00:59:35.777Z",
+      "lastDownloaded": "2025-03-10T00:58:22.177Z",
       "integrity": "b2697dffec7aa02495fc815b25b041e25a71d5a4",
       "postProcesses": [],
       "headers": {}
@@ -553,9 +553,9 @@
       "path": "./data_files/shinryoujo_43/001425352.xlsx",
       "catalogUrl": null,
       "catalogResourceId": null,
-      "lastModified": "2025-02-27T04:58:44.000Z",
-      "eTag": "d961-62f188b5b557a",
-      "lastDownloaded": "2025-03-09T00:59:35.963Z",
+      "lastModified": "2025-02-27T04:58:43.000Z",
+      "eTag": "d961-62f188b5a015b",
+      "lastDownloaded": "2025-03-10T00:58:22.569Z",
       "integrity": "9039b13f1b59390ae882b508e35bc1590f060669",
       "postProcesses": [],
       "headers": {}
@@ -568,7 +568,7 @@
       "catalogResourceId": null,
       "lastModified": "2025-02-27T04:58:34.000Z",
       "eTag": "abe2-62f188acbf593",
-      "lastDownloaded": "2025-03-09T00:59:36.161Z",
+      "lastDownloaded": "2025-03-10T00:58:22.897Z",
       "integrity": "f1d1093a7c8777ac9112d66078658199d217fb3a",
       "postProcesses": [],
       "headers": {}
@@ -581,7 +581,7 @@
       "catalogResourceId": null,
       "lastModified": "2025-02-27T04:58:20.000Z",
       "eTag": "8362-62f1889ee1c24",
-      "lastDownloaded": "2025-03-09T00:59:36.350Z",
+      "lastDownloaded": "2025-03-10T00:58:23.241Z",
       "integrity": "76c0b64245006cd61321fe00f5858f87f23d3b09",
       "postProcesses": [],
       "headers": {}
@@ -594,7 +594,7 @@
       "catalogResourceId": null,
       "lastModified": "2025-02-27T04:59:49.000Z",
       "eTag": "f0f0-62f188f3f2a62",
-      "lastDownloaded": "2025-03-09T00:59:36.669Z",
+      "lastDownloaded": "2025-03-10T00:58:23.585Z",
       "integrity": "2b5afbfc16101d39cfd8eae0f7e33f94e83ce138",
       "postProcesses": [],
       "headers": {}
@@ -607,7 +607,7 @@
       "catalogResourceId": null,
       "lastModified": "2025-02-27T05:00:06.000Z",
       "eTag": "7537-62f18903e923f",
-      "lastDownloaded": "2025-03-09T00:59:36.892Z",
+      "lastDownloaded": "2025-03-10T00:58:23.963Z",
       "integrity": "b6059c27120253c4258e4fb6889a9737c8c59584",
       "postProcesses": [],
       "headers": {}
@@ -620,7 +620,7 @@
       "catalogResourceId": null,
       "lastModified": "2025-02-28T07:41:39.000Z",
       "eTag": null,
-      "lastDownloaded": "2025-03-09T00:59:41.648Z",
+      "lastDownloaded": "2025-03-10T00:58:28.345Z",
       "integrity": "5d3d857d629eca312e56afde02a27de3d12dd48e",
       "postProcesses": [
         "unzip"
@@ -635,7 +635,7 @@
       "catalogResourceId": null,
       "lastModified": "2025-02-28T07:59:02.000Z",
       "eTag": null,
-      "lastDownloaded": "2025-03-09T00:59:43.946Z",
+      "lastDownloaded": "2025-03-10T00:58:30.504Z",
       "integrity": "975846c05404343a825ee8877f9279a1f275287c",
       "postProcesses": [
         "unzip"
@@ -650,7 +650,7 @@
       "catalogResourceId": null,
       "lastModified": "2024-06-10T02:15:28.000Z",
       "eTag": "2471ed71-61a7fb90bf000",
-      "lastDownloaded": "2025-03-09T01:00:42.471Z",
+      "lastDownloaded": "2025-03-10T00:59:41.838Z",
       "integrity": "d1046ed61d407d21b39bddce3af7847a95120b62",
       "postProcesses": [
         "unzip"
