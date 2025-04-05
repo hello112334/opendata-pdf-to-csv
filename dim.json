@@ -378,6 +378,14 @@
       "headers": {}
     },
     {
+      "url": "https://www.mhlw.go.jp/content/10800000/000610144.pdf",
+      "name": "shinryoujo_50",
+      "catalogUrl": null,
+      "catalogResourceId": null,
+      "postProcesses": [],
+      "headers": {}
+    },
+    {
       "url": "https://www.post.japanpost.jp/zipcode/dl/utf/zip/utf_ken_all.zip",
       "name": "ken_all",
       "catalogUrl": null,
